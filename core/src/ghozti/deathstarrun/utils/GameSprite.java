@@ -16,7 +16,7 @@ public abstract class GameSprite {
     private boolean debugMode;
 
     //constant textures
-    TextureRegion hitboxTexture;
+    TextureRegion hitboxTexture = Atlas.getHitbox();
 
     public GameSprite(Sprite sprite, float[] positionArray, float width, float height, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, TextureRegion region){
         this.sprite = sprite;
