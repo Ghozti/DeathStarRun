@@ -1,0 +1,32 @@
+Death star run:
+
+current concept-
+
+- vertical directional gameplay (the player ship will "move" up) inside of the death star trenches.
+
+- there will be 2 teams, the empire and the rebels. The opposite side of the player will be controlled by NPCs
+
+
+Objective-
+
+- as rebels the goal is to either get as far as you can inside the trench without dying or to destroy the death star itself
+- as the empire you must destroy all rebel ships before they destroy the death star.
+- both rebels and imperials must avoid obstacles. Rebels will have to avoid physical barriers as well as incoming tie fighters trying to intercept them.
+  Imperials must avoid physical barriers and rebel reinforcements
+- imperial ships will come from above (since it's the direction the player is forced to go) and the player will have to either avoid or destroy them before they leave the screen. The more that they avoid,
+  the more damage each ship will hit in each shot.
+- Rebel ships will also come from above but only when the player is playing as the empire. Every time the rebel ships are let go, the death star will take a certain amount of damage. When it takes enough, the station will blow up and the empire looses.
+- at a certain score the player will have the chance to destroy the death star(if playing as the rebels) (think of this as the boss battle)
+- when the player plays as the empire, there is a limited amount of rebel ships allowed to exist in a single instance of the game in total. Once they are all wiped out, they win
+- the game will create an illusion that when playing as the empire it creates the illusion that you are intercepting the rebels (basically playing as one of the imperial reinforcements) and the same goes for the other side except you switch the teams.
+
+Other rules-
+
+- imperial ships are weaker in health but faster in speed.
+- rebel ships are stronger in health but slower in speed.
+- imperial ships will have missles, lasers and ultra fast fire mode.
+- rebel ships will have missles, lasers and shields (shields can break after a certain amount of damage)
+- the player can unlock ships for either side (ex: rebels: y wing, a wing, lukes x wing, dev x wing. Empire: tie interceptor, tie bomber, vader's advanced, dev tie)
+- the player will have the default x wing and empire will have the default tie fighter
+- random obstacles will come down, encouraging the player to move away.
+
