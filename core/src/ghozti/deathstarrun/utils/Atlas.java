@@ -6,7 +6,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 public class Atlas {
 
-    private static TextureAtlas ATLAS = new TextureAtlas(Gdx.files.internal("assets/assets.atlas"));// texture atlas instantiation and file path
+    private static TextureAtlas ATLAS = new TextureAtlas(Gdx.files.internal("core/assets/assets.atlas"));// texture atlas instantiation and file path
 
     public static TextureRegion getBackground(){
         return ATLAS.findRegion("bg");

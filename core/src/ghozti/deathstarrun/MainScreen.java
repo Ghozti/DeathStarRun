@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
+import ghozti.deathstarrun.objects.background.BackGround;
 
 public class MainScreen implements Screen {
 
@@ -14,10 +15,16 @@ public class MainScreen implements Screen {
     SpriteBatch batch;
     Viewport viewport;
 
+    //game objects
+    BackGround backGround;
+
     public MainScreen(){
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        viewport = new StretchViewport(1280,720,camera);
+        viewport = new StretchViewport(1920,1080,camera);
+
+        //game objects
+        backGround = new BackGround();
     }
 
     @Override
@@ -26,13 +33,16 @@ public class MainScreen implements Screen {
     }
 
     private void update(){//call all of the update methods in sprites here
-
+        backGround.update();
     }
 
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
         update();
+        batch.begin();
+        backGround.draw(batch);
+        batch.end();
     }
 
     @Override
