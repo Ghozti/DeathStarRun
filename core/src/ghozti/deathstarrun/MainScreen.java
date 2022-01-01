@@ -10,6 +10,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import ghozti.deathstarrun.objects.background.BackGround;
 import ghozti.deathstarrun.objects.entities.Player;
+import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
 
 public class MainScreen implements Screen {
@@ -30,7 +31,7 @@ public class MainScreen implements Screen {
 
         //game objects
         backGround = new BackGround();
-        player = new Player(new Sprite(),new float[]{0,0},370,370,1,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
+        player = new Player(new Sprite(Atlas.getX_WING()),new float[]{500,500},2,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
     }
 
     @Override

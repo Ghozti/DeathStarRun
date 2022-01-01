@@ -10,7 +10,7 @@ public abstract class GameSprite {
 
     protected Sprite sprite;
     protected float[] positionArray;//index 0 -> x axis, index 1 -> y axis
-    protected float width,height,scale,unscaledWidth,unscaledHeight;
+    protected float scale,unscaledWidth,unscaledHeight;
     protected float hitboxOffsetx, hitboxOffsetY;
     protected float speed;
     protected Rectangle rectangle;
@@ -20,16 +20,13 @@ public abstract class GameSprite {
     //constant textures
     TextureRegion hitboxTexture = Atlas.getHitbox();
 
-    public GameSprite(Sprite sprite, float[] positionArray, float width, float height, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID){
+    public GameSprite(Sprite sprite, float[] positionArray, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID){
         setFighterType(fighterID);
         this.sprite = sprite;
         this.sprite.setRegion(region);
 
         this.positionArray = positionArray;
         this.sprite.setPosition(this.positionArray[0],this.positionArray[1]);
-
-        this.width = width;
-        this.height = height;
 
         this.scale = scale;
         this.sprite.setScale(this.scale);
@@ -45,14 +42,12 @@ public abstract class GameSprite {
         this.rectangle = rectangle;
         this.rectangle.x = positionArray[0];
         this.rectangle.y = positionArray[1];
-        this.rectangle.width = width;
-        this.rectangle.height = height;
         this.rectangle.x += hitboxOffsetx;
         this.rectangle.y += hitboxOffsetY;
 
         this.debugMode = debugMode;
 
-        this.sprite.setOrigin(0,0);
+        this.sprite.setOrigin((this.sprite.getWidth() * scale)/2,(this.sprite.getHeight() * scale)/2);
     }
 
     public Sprite getSprite() {
@@ -61,14 +56,6 @@ public abstract class GameSprite {
 
     public float[] getPositionArray() {
         return positionArray;
-    }
-
-    public float getWidth() {
-        return width;
-    }
-
-    public float getHeight() {
-        return height;
     }
 
     public float getScale() {
@@ -124,7 +111,8 @@ public abstract class GameSprite {
     //will draw the hitbox if the game is in debug mode
     public void drawHitBox(Batch batch) {
         if(debugMode) {
-            batch.draw(hitboxTexture, rectangle.x, rectangle.y, width, height);
+            batch.draw(Atlas.getHitbox(),sprite.getX(),sprite.getY(),50,50);
+            batch.draw(hitboxTexture, (sprite.getX()/scale), (sprite.getY()/scale), sprite.getWidth() * scale, sprite.getHeight() * scale);
         }
     }
 
@@ -136,4 +124,6 @@ public abstract class GameSprite {
             speed = Constants.TieFighter.MAX_SPEED;
         }
     }
+
+    //TODO fix the origining stuff because rotaions are not functioning well
 }
