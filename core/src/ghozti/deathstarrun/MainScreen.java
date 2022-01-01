@@ -2,11 +2,15 @@ package ghozti.deathstarrun;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import ghozti.deathstarrun.objects.background.BackGround;
+import ghozti.deathstarrun.objects.entities.Player;
+import ghozti.deathstarrun.utils.Constants;
 
 public class MainScreen implements Screen {
 
@@ -17,6 +21,7 @@ public class MainScreen implements Screen {
 
     //game objects
     BackGround backGround;
+    Player player;
 
     public MainScreen(){
         batch = new SpriteBatch();
@@ -25,6 +30,7 @@ public class MainScreen implements Screen {
 
         //game objects
         backGround = new BackGround();
+        player = new Player(new Sprite(),new float[]{0,0},370,370,1,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
     }
 
     @Override
@@ -34,6 +40,7 @@ public class MainScreen implements Screen {
 
     private void update(){//call all of the update methods in sprites here
         backGround.update();
+        player.update();
     }
 
     @Override
@@ -42,6 +49,7 @@ public class MainScreen implements Screen {
         update();
         batch.begin();
         backGround.draw(batch);
+        player.draw(batch);
         batch.end();
     }
 

@@ -18,12 +18,11 @@ public class DeathStarTrench {
         initY = y;
         width = 1920;
         height = 1080;
-        currentSpeed = Constants.ScrollingBackGround.K_INIT_SPEED;
+        currentSpeed = Constants.ScrollingBackGround.INIT_SPEED;
     }
 
     public void update(){
         positionArray[1] -= currentSpeed;
-        System.out.println(positionArray[1]);
         if (positionArray[1] <= -1080){
             positionArray[1] = 1080;
         }

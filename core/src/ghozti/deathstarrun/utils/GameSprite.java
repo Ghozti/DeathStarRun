@@ -8,17 +8,20 @@ import com.badlogic.gdx.math.Rectangle;
 public abstract class GameSprite {
     //my own modification of the sprite class
 
-    private Sprite sprite;
-    private float[] positionArray;//index 0 -> x axis, index 1 -> y axis
-    private float width,height,scale,unscaledWidth,unscaledHeight;
-    private float hitboxOffsetx, hitboxOffsetY;
-    private Rectangle rectangle;
-    private boolean debugMode;
+    protected Sprite sprite;
+    protected float[] positionArray;//index 0 -> x axis, index 1 -> y axis
+    protected float width,height,scale,unscaledWidth,unscaledHeight;
+    protected float hitboxOffsetx, hitboxOffsetY;
+    protected float speed;
+    protected Rectangle rectangle;
+    protected boolean debugMode;
+    protected TextureRegion region;
 
     //constant textures
     TextureRegion hitboxTexture = Atlas.getHitbox();
 
-    public GameSprite(Sprite sprite, float[] positionArray, float width, float height, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, TextureRegion region){
+    public GameSprite(Sprite sprite, float[] positionArray, float width, float height, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID){
+        setFighterType(fighterID);
         this.sprite = sprite;
         this.sprite.setRegion(region);
 
@@ -122,6 +125,15 @@ public abstract class GameSprite {
     public void drawHitBox(Batch batch) {
         if(debugMode) {
             batch.draw(hitboxTexture, rectangle.x, rectangle.y, width, height);
+        }
+    }
+
+    public void setFighterType(int fighterID){
+        if (fighterID == Constants.ShipIDs.X_WING){
+            speed = Constants.XWing.MAX_SPEED;
+            region = Atlas.getX_WING();
+        }else if (fighterID == Constants.ShipIDs.TIE_FIGHTER){
+            speed = Constants.TieFighter.MAX_SPEED;
         }
     }
 }
