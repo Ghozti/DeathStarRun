@@ -22,7 +22,13 @@ public class Player extends GameSprite {
 
     @Override
     public void update() {
-
+        //sprite.rotate(1);
+        System.out.println(sprite.getOriginX());
+        System.out.println(sprite.getOriginY());
+        System.out.println("***");
+        System.out.println(sprite.getX());
+        System.out.println(sprite.getY());
+        System.out.println("---");
     }
 
     private void handleInput(){

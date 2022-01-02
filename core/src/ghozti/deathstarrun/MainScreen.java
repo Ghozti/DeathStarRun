@@ -31,7 +31,7 @@ public class MainScreen implements Screen {
 
         //game objects
         backGround = new BackGround();
-        player = new Player(new Sprite(Atlas.getX_WING()),new float[]{500,500},2,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
+        player = new Player(new Sprite(Atlas.getX_WING()),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
     }
 
     @Override

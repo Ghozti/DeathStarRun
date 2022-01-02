@@ -1,26 +1,26 @@
 
 assets.png
-size: 512, 512
+size: 512, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 bg
   rotate: false
-  xy: 2, 2
+  xy: 256, 166
   size: 160, 90
   orig: 160, 90
   offset: 0, 0
   index: -1
 hitbox
   rotate: false
-  xy: 260, 286
+  xy: 256, 102
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 xwing
   rotate: false
-  xy: 2, 94
+  xy: 0, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0

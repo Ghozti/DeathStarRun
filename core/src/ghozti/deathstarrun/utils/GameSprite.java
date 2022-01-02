@@ -46,8 +46,7 @@ public abstract class GameSprite {
         this.rectangle.y += hitboxOffsetY;
 
         this.debugMode = debugMode;
-
-        this.sprite.setOrigin((this.sprite.getWidth() * scale)/2,(this.sprite.getHeight() * scale)/2);
+        this.sprite.setOriginCenter();
     }
 
     public Sprite getSprite() {
@@ -86,10 +85,6 @@ public abstract class GameSprite {
         return debugMode;
     }
 
-    public void setSpriteOrigin(float x, float y){
-        sprite.setOrigin(x,y);
-    }
-
     public void updateSpritePosition(float xChange, float yChange){
         positionArray[0] += xChange;
         positionArray[1] += yChange;
@@ -111,8 +106,7 @@ public abstract class GameSprite {
     //will draw the hitbox if the game is in debug mode
     public void drawHitBox(Batch batch) {
         if(debugMode) {
-            batch.draw(Atlas.getHitbox(),sprite.getX(),sprite.getY(),50,50);
-            batch.draw(hitboxTexture, (sprite.getX()/scale), (sprite.getY()/scale), sprite.getWidth() * scale, sprite.getHeight() * scale);
+            batch.draw(hitboxTexture, (sprite.getX() + sprite.getOriginX()) - (sprite.getWidth() * scale)/2,(sprite.getY() + sprite.getOriginY()) - (sprite.getHeight() * scale)/2, sprite.getWidth() * scale, sprite.getHeight() * scale);
         }
     }
 
@@ -124,6 +118,4 @@ public abstract class GameSprite {
             speed = Constants.TieFighter.MAX_SPEED;
         }
     }
-
-    //TODO fix the origining stuff because rotaions are not functioning well
 }
