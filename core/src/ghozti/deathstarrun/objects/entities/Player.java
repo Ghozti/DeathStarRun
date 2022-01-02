@@ -1,5 +1,7 @@
 package ghozti.deathstarrun.objects.entities;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,6 +11,8 @@ import ghozti.deathstarrun.utils.Constants;
 import ghozti.deathstarrun.utils.GameSprite;
 
 public class Player extends GameSprite {
+
+    float currentRotation;
 
     public Player(Sprite sprite, float[] positionArray, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID) {
         super(sprite, positionArray, scale, unscaledWidth, unscaledHeight, hitboxOffsetx, hitboxOffsetY, rectangle, debugMode, fighterID);
@@ -22,16 +26,24 @@ public class Player extends GameSprite {
 
     @Override
     public void update() {
-        //sprite.rotate(1);
-        System.out.println(sprite.getOriginX());
-        System.out.println(sprite.getOriginY());
-        System.out.println("***");
-        System.out.println(sprite.getX());
-        System.out.println(sprite.getY());
-        System.out.println("---");
+        handleInput();
     }
 
     private void handleInput(){
-
+        float xChange = 0, yChange = 0;
+        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+            if (currentRotation <= Constants.XWing.MAX_ROTATION){
+                currentRotation += Constants.XWing.ROTATION_SPEED;
+                sprite.rotate(-Constants.XWing.ROTATION_SPEED);
+                xChange = Constants.XWing.MAX_SPEED;
+            }
+        }else if (Gdx.input.isKeyPressed(Input.Keys.A)){
+            if (currentRotation <= Constants.XWing.MAX_ROTATION){
+                currentRotation += Constants.XWing.ROTATION_SPEED;
+                sprite.rotate(Constants.XWing.ROTATION_SPEED);
+                xChange = -Constants.XWing.MAX_SPEED;
+            }
+        }
+        updateSpritePosition(xChange,yChange);
     }
 }

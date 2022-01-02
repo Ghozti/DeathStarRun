@@ -104,9 +104,18 @@ public abstract class GameSprite {
     }
 
     //will draw the hitbox if the game is in debug mode
+
+    private float getHitBoxX(){
+        return sprite != null ? (sprite.getX() + sprite.getOriginX()) - (sprite.getWidth() * scale)/2 : 0;
+    }
+
+    private float getHitBoxY(){
+        return sprite != null ? (sprite.getY() + sprite.getOriginY()) - (sprite.getHeight() * scale)/2 : 0;
+    }
+
     public void drawHitBox(Batch batch) {
         if(debugMode) {
-            batch.draw(hitboxTexture, (sprite.getX() + sprite.getOriginX()) - (sprite.getWidth() * scale)/2,(sprite.getY() + sprite.getOriginY()) - (sprite.getHeight() * scale)/2, sprite.getWidth() * scale, sprite.getHeight() * scale);
+            batch.draw(hitboxTexture, getHitBoxX(), getHitBoxY(), sprite.getWidth() * scale, sprite.getHeight() * scale);
         }
     }
 

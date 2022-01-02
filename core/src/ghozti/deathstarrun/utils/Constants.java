@@ -28,6 +28,8 @@ public class Constants {
 
     public static class XWing{
         public static final float MAX_SPEED = 3;
+        public static final float MAX_ROTATION = 8;
+        public static final float ROTATION_SPEED = 0.08f;
     }
 
     public static class TieFighter{
