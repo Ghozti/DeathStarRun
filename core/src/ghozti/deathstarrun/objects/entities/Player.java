@@ -4,10 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import ghozti.deathstarrun.utils.Atlas;
-import ghozti.deathstarrun.utils.Constants;
 import ghozti.deathstarrun.utils.GameSprite;
 
 public class Player extends GameSprite {
@@ -63,6 +60,12 @@ public class Player extends GameSprite {
                     sprite.setRotation(0);
                 }
             }
+        }
+
+        if (Gdx.input.isKeyPressed(Input.Keys.W)){
+            yChange = speed;
+        }else if (Gdx.input.isKeyPressed(Input.Keys.S)){
+            yChange = -speed;
         }
         updateSpritePosition(xChange,yChange);
     }
