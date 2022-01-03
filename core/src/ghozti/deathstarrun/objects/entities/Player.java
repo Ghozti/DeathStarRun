@@ -12,8 +12,6 @@ import ghozti.deathstarrun.utils.GameSprite;
 
 public class Player extends GameSprite {
 
-    float currentRotation;
-
     public Player(Sprite sprite, float[] positionArray, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID) {
         super(sprite, positionArray, scale, unscaledWidth, unscaledHeight, hitboxOffsetx, hitboxOffsetY, rectangle, debugMode, fighterID);
     }
@@ -29,19 +27,41 @@ public class Player extends GameSprite {
         handleInput();
     }
 
+    private float rightRotation, leftRotation;
+
     private void handleInput(){
         float xChange = 0, yChange = 0;
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
-            if (currentRotation <= Constants.XWing.MAX_ROTATION){
-                currentRotation += Constants.XWing.ROTATION_SPEED;
-                sprite.rotate(-Constants.XWing.ROTATION_SPEED);
-                xChange = Constants.XWing.MAX_SPEED;
+            xChange = speed;
+            if (rightRotation <= maxRotationValue){
+                sprite.rotate(-rotaionSpeed);
+                rightRotation += rotaionSpeed;
+                leftRotation -= rotaionSpeed;
             }
         }else if (Gdx.input.isKeyPressed(Input.Keys.A)){
-            if (currentRotation <= Constants.XWing.MAX_ROTATION){
-                currentRotation += Constants.XWing.ROTATION_SPEED;
-                sprite.rotate(Constants.XWing.ROTATION_SPEED);
-                xChange = -Constants.XWing.MAX_SPEED;
+            xChange = -speed;
+            if (leftRotation <= maxRotationValue){
+                sprite.rotate(rotaionSpeed);
+                leftRotation += rotaionSpeed;
+                rightRotation -= rotaionSpeed;
+            }
+        }else{
+            if (rightRotation >= 0){
+                if ((int)rightRotation != 0){
+                    sprite.rotate(rotaionSpeed);
+                    rightRotation -= rotaionSpeed;
+                    leftRotation += rotaionSpeed;
+                }else {
+                    sprite.setRotation(0);
+                }
+            }else if (leftRotation >= 0){
+                if ((int)leftRotation != 0){
+                    sprite.rotate(-rotaionSpeed);
+                    leftRotation -= rotaionSpeed;
+                    rightRotation += rotaionSpeed;
+                }else {
+                    sprite.setRotation(0);
+                }
             }
         }
         updateSpritePosition(xChange,yChange);

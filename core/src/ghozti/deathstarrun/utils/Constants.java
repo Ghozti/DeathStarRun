@@ -34,5 +34,7 @@ public class Constants {
 
     public static class TieFighter{
         public static final float MAX_SPEED = 6;
+        public static final float MAX_ROTATION = 8;
+        public static final float ROTATION_SPEED = 0.08f;
     }
 }

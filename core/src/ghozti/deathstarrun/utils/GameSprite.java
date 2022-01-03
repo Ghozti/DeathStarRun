@@ -16,12 +16,14 @@ public abstract class GameSprite {
     protected Rectangle rectangle;
     protected boolean debugMode;
     protected TextureRegion region;
+    protected float maxRotationValue, rotaionSpeed, movementSpeed;
 
     //constant textures
     TextureRegion hitboxTexture = Atlas.getHitbox();
 
     public GameSprite(Sprite sprite, float[] positionArray, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID){
         setFighterType(fighterID);
+        setRotationAndSpeedValues(fighterID);
         this.sprite = sprite;
         this.sprite.setRegion(region);
 
@@ -125,6 +127,21 @@ public abstract class GameSprite {
             region = Atlas.getX_WING();
         }else if (fighterID == Constants.ShipIDs.TIE_FIGHTER){
             speed = Constants.TieFighter.MAX_SPEED;
+        }
+    }
+
+    private void setRotationAndSpeedValues(int fighterID){
+        switch (fighterID){
+            case 0:
+                maxRotationValue = Constants.XWing.MAX_ROTATION;
+                rotaionSpeed = Constants.XWing.ROTATION_SPEED;
+                speed = Constants.XWing.MAX_SPEED;
+                break;
+            case 1:
+                maxRotationValue = Constants.TieFighter.MAX_ROTATION;
+                rotaionSpeed = Constants.TieFighter.ROTATION_SPEED;
+                speed = Constants.TieFighter.MAX_SPEED;
+                break;
         }
     }
 }
