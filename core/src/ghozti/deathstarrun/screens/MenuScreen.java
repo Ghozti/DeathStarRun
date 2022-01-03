@@ -2,6 +2,7 @@ package ghozti.deathstarrun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -13,17 +14,19 @@ public class MenuScreen implements Screen {
     Texture background;
     float width,height;
     SpriteBatch batch;
+    Sound screenSound;
 
     public MenuScreen(){
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/title.png"));
         width = 1920;
         height = 1080;
         batch = new SpriteBatch();
+        screenSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/death-star-run-startAssets/star wars intro.mp3"));
     }
 
     @Override
     public void show() {
-
+        screenSound.play(1,1f,0);
     }
 
     @Override
@@ -57,5 +60,6 @@ public class MenuScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+        screenSound.dispose();
     }
 }
