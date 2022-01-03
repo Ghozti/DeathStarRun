@@ -1,4 +1,4 @@
-package ghozti.deathstarrun;
+package ghozti.deathstarrun.screens;
 
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
