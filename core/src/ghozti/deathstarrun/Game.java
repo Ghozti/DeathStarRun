@@ -10,12 +10,13 @@ public class Game extends com.badlogic.gdx.Game {
 	@Override
 	public void create () {
 		setScreen(new MenuScreen());
+		startGame = true;
 	}
 
 	@Override
 	public void render() {
 		if (startGame && !gameStarted){
-			setScreen(new MainScreen());
+			screen = new MainScreen();
 			gameStarted = true;
 		}
 		super.render();
