@@ -27,7 +27,7 @@ public class MenuScreen implements Screen {
 
     @Override
     public void show() {
-        screenSound.play(1,1f,0);
+        screenSound.play(1);
     }
 
     @Override
