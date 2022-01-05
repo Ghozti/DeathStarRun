@@ -22,6 +22,7 @@ public class MenuScreen implements Screen {
         height = 1080;
         batch = new SpriteBatch();
         screenSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/death-star-run-startAssets/star wars intro.mp3"));
+        screenSound.loop();
     }
 
     @Override
