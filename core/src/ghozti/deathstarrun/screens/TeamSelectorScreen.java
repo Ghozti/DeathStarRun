@@ -19,7 +19,7 @@ public class TeamSelectorScreen implements Screen {
     SpriteBatch batch;
     Sound rebelSound, imperialSound;
     com.badlogic.gdx.math.Rectangle rebelHitbox, imperialHitbox, mouseHitbox;
-    boolean debug;
+    boolean debug, rebelSoundPlaying, imperialSoundPlaying;
 
     public TeamSelectorScreen(){
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
@@ -29,6 +29,8 @@ public class TeamSelectorScreen implements Screen {
         width = 1920;
         height = 1080;
         batch = new SpriteBatch();
+        rebelSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/death-star-run-startAssets/rebelSound.mp3"));
+        imperialSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/death-star-run-startAssets/imperialMarch.mp3"));
         rebelHitbox = new com.badlogic.gdx.math.Rectangle();
         imperialHitbox = new com.badlogic.gdx.math.Rectangle();
         mouseHitbox = new com.badlogic.gdx.math.Rectangle();
@@ -58,6 +60,26 @@ public class TeamSelectorScreen implements Screen {
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
         mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)height);
+
+        if (mouseHitbox.overlaps(rebelHitbox)){
+           if (!rebelSoundPlaying){
+               rebelSoundPlaying = true;
+               rebelSound.play(1);
+           }
+        }else {
+            rebelSoundPlaying = false;
+            rebelSound.stop();
+        }
+
+        if (mouseHitbox.overlaps(imperialHitbox)){
+            if (!imperialSoundPlaying){
+                imperialSoundPlaying = true;
+                imperialSound.play(1);
+            }
+        }else {
+            imperialSoundPlaying = false;
+            imperialSound.stop();
+        }
     }
 
     @Override
