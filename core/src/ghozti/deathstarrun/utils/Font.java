@@ -13,7 +13,7 @@ public class Font {
 
     public Font(int size){
         //creates a bitmapFont from our file
-        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("NugoSansLight-9YzoK.ttf"));
+        FreeTypeFontGenerator fontGenerator = new FreeTypeFontGenerator(Gdx.files.internal("core/assets/death-star-run-startAssets/StarJedi-DGRW.ttf"));
         FreeTypeFontGenerator.FreeTypeFontParameter fontParameter = new FreeTypeFontGenerator.FreeTypeFontParameter();
 
         //sets font attributes

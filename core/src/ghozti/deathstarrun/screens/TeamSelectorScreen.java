@@ -8,8 +8,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.deathstarrun.utils.Atlas;
-
-import java.awt.*;
+import ghozti.deathstarrun.utils.Font;
 
 public class TeamSelectorScreen implements Screen {
 
@@ -19,7 +18,9 @@ public class TeamSelectorScreen implements Screen {
     SpriteBatch batch;
     Sound rebelSound, imperialSound;
     com.badlogic.gdx.math.Rectangle rebelHitbox, imperialHitbox, mouseHitbox;
-    boolean debug, rebelSoundPlaying, imperialSoundPlaying;
+    boolean debug, rebelSoundPlaying, imperialSoundPlaying, screenDisposed;
+    ghozti.deathstarrun.utils.Font font;
+    long rebelSoundID, empireSoundID;
 
     public TeamSelectorScreen(){
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
@@ -35,6 +36,7 @@ public class TeamSelectorScreen implements Screen {
         imperialHitbox = new com.badlogic.gdx.math.Rectangle();
         mouseHitbox = new com.badlogic.gdx.math.Rectangle();
         debug = true;
+        font = new Font(100);
 
         rebelHitbox.x = 400;
         rebelHitbox.y = 400;
@@ -57,6 +59,8 @@ public class TeamSelectorScreen implements Screen {
 
     }
 
+    float rebelVolume = 1, empireVolume = 1;
+
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
         mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)height);
@@ -64,36 +68,48 @@ public class TeamSelectorScreen implements Screen {
         if (mouseHitbox.overlaps(rebelHitbox)){
            if (!rebelSoundPlaying){
                rebelSoundPlaying = true;
-               rebelSound.play(1);
+               rebelSound.stop();
+               imperialSound.stop();
+               rebelVolume = 1;
+               rebelSoundID = rebelSound.play(1);
            }
         }else {
             rebelSoundPlaying = false;
-            rebelSound.stop();
+            rebelSound.setVolume(rebelSoundID,rebelVolume);
+            rebelVolume -= .01;
         }
 
         if (mouseHitbox.overlaps(imperialHitbox)){
             if (!imperialSoundPlaying){
                 imperialSoundPlaying = true;
-                imperialSound.play(1);
+                imperialSound.stop();
+                rebelSound.stop();
+                empireVolume = 1;
+                empireSoundID = imperialSound.play(empireVolume);
             }
         }else {
             imperialSoundPlaying = false;
-            imperialSound.stop();
+            imperialSound.setVolume(empireSoundID,empireVolume);
+            empireVolume -= .01;
         }
     }
 
     @Override
     public void render(float delta) {
-        update();
-        ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
-        batch.begin();
-        batch.draw(background,0,0,1920,1080);
-        batch.draw(rebelLogo,400,400,300,300);
-        batch.draw(imperialLogo,1120,400,300,300);
-        batch.draw(hitboxTexture, rebelHitbox.x,rebelHitbox.y,rebelHitbox.width,rebelHitbox.height);
-        batch.draw(hitboxTexture, imperialHitbox.x,imperialHitbox.y,imperialHitbox.width,imperialHitbox.height);
-        batch.draw(hitboxTexture,mouseHitbox.x,mouseHitbox.y,mouseHitbox.width,mouseHitbox.height);
-        batch.end();
+        if (!screenDisposed) {
+            update();
+            ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
+            batch.begin();
+            batch.draw(background, 0, 0, 1920, 1080);
+            batch.draw(rebelLogo, 400, 400, 300, 300);
+            batch.draw(imperialLogo, 1120, 400, 300, 300);
+            batch.draw(hitboxTexture, rebelHitbox.x, rebelHitbox.y, rebelHitbox.width, rebelHitbox.height);
+            batch.draw(hitboxTexture, imperialHitbox.x, imperialHitbox.y, imperialHitbox.width, imperialHitbox.height);
+            batch.draw(hitboxTexture, mouseHitbox.x, mouseHitbox.y, mouseHitbox.width, mouseHitbox.height);
+
+            font.draw(batch, "Rebels", 400, 300, 100, false);
+            batch.end();
+        }
     }
 
     @Override
@@ -113,11 +129,13 @@ public class TeamSelectorScreen implements Screen {
 
     @Override
     public void hide() {
-
+        screenDisposed = true;
     }
 
     @Override
     public void dispose() {
         batch.dispose();
+        rebelSound.dispose();
+        imperialSound.dispose();
     }
 }
