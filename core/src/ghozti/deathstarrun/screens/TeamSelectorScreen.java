@@ -36,7 +36,7 @@ public class TeamSelectorScreen implements Screen {
         imperialHitbox = new com.badlogic.gdx.math.Rectangle();
         mouseHitbox = new com.badlogic.gdx.math.Rectangle();
         debug = true;
-        font = new Font(100);
+        font = new Font(250);
 
         rebelHitbox.x = 400;
         rebelHitbox.y = 400;
@@ -70,8 +70,8 @@ public class TeamSelectorScreen implements Screen {
                rebelSoundPlaying = true;
                rebelSound.stop();
                imperialSound.stop();
-               rebelVolume = 1;
-               rebelSoundID = rebelSound.play(1);
+               rebelVolume = 0;
+               rebelSoundID = rebelSound.play(rebelVolume);
            }
         }else {
             rebelSoundPlaying = false;
@@ -91,7 +91,7 @@ public class TeamSelectorScreen implements Screen {
             imperialSoundPlaying = false;
             imperialSound.setVolume(empireSoundID,empireVolume);
             empireVolume -= .01;
-        }
+        }  
     }
 
     @Override
@@ -107,7 +107,8 @@ public class TeamSelectorScreen implements Screen {
             batch.draw(hitboxTexture, imperialHitbox.x, imperialHitbox.y, imperialHitbox.width, imperialHitbox.height);
             batch.draw(hitboxTexture, mouseHitbox.x, mouseHitbox.y, mouseHitbox.width, mouseHitbox.height);
 
-            font.draw(batch, "Rebels", 400, 300, 100, false);
+            font.draw(batch, "Rebellion", 315, 300, 0, false);
+            font.draw(batch, "Empire",1120,300,0,false);
             batch.end();
         }
     }
