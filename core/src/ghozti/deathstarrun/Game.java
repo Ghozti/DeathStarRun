@@ -2,6 +2,7 @@ package ghozti.deathstarrun;
 
 import ghozti.deathstarrun.screens.MainScreen;
 import ghozti.deathstarrun.screens.MenuScreen;
+import ghozti.deathstarrun.screens.TeamSelectorScreen;
 
 public class Game extends com.badlogic.gdx.Game {
 
@@ -9,15 +10,11 @@ public class Game extends com.badlogic.gdx.Game {
 
 	@Override
 	public void create () {
-		setScreen(new MenuScreen());
+		setScreen(new TeamSelectorScreen());
 	}
 
 	@Override
 	public void render() {
-		if (startGame && !gameStarted){
-			screen = new MainScreen();
-			gameStarted = true;
-		}
 		super.render();
 	}
 
