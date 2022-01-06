@@ -1,6 +1,7 @@
 package ghozti.deathstarrun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -21,6 +22,10 @@ public class TeamSelectorScreen implements Screen {
     boolean debug, rebelSoundPlaying, imperialSoundPlaying, screenDisposed;
     ghozti.deathstarrun.utils.Font font;
     long rebelSoundID, empireSoundID;
+
+    public static String teamSelected = "";
+
+    //TODO master the sound
 
     public TeamSelectorScreen(){
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
@@ -60,6 +65,7 @@ public class TeamSelectorScreen implements Screen {
     }
 
     float rebelVolume = 1, empireVolume = 1;
+    float rebelLogoPosMax = 420, rebelLogoPosMin = 400, rebelLogoPos = 400;
 
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
@@ -72,6 +78,12 @@ public class TeamSelectorScreen implements Screen {
                imperialSound.stop();
                rebelVolume = 0;
                rebelSoundID = rebelSound.play(rebelVolume);
+           }
+           if (rebelLogoPos < rebelLogoPosMax){
+               rebelLogoPos += .5;
+           }
+           if (rebelLogoPos > rebelLogoPosMax) {
+                rebelLogoPos -= .5;
            }
         }else {
             rebelSoundPlaying = false;
@@ -101,7 +113,7 @@ public class TeamSelectorScreen implements Screen {
             ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
             batch.begin();
             batch.draw(background, 0, 0, 1920, 1080);
-            batch.draw(rebelLogo, 400, 400, 300, 300);
+            batch.draw(rebelLogo, 400, rebelLogoPos, 300, 300);
             batch.draw(imperialLogo, 1120, 400, 300, 300);
             batch.draw(hitboxTexture, rebelHitbox.x, rebelHitbox.y, rebelHitbox.width, rebelHitbox.height);
             batch.draw(hitboxTexture, imperialHitbox.x, imperialHitbox.y, imperialHitbox.width, imperialHitbox.height);
