@@ -84,7 +84,7 @@ public class TeamSelectorScreen implements Screen {
            }
            if (rebelLogoPos > rebelLogoPosMax) {
                 rebelLogoPos -= .5;
-           }
+           }//todo work on this
         }else {
             rebelSoundPlaying = false;
             rebelSound.setVolume(rebelSoundID,rebelVolume);
