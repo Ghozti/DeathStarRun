@@ -19,9 +19,8 @@ public class TeamSelectorScreen implements Screen {
     SpriteBatch batch;
     Sound rebelSound, imperialSound;
     com.badlogic.gdx.math.Rectangle rebelHitbox, imperialHitbox, mouseHitbox;
-    boolean debug, rebelSoundPlaying, imperialSoundPlaying, screenDisposed;
+    boolean debug, screenDisposed;
     ghozti.deathstarrun.utils.Font font;
-    long rebelSoundID, empireSoundID;
 
     public static String teamSelected = "";
 
@@ -55,8 +54,8 @@ public class TeamSelectorScreen implements Screen {
 
         mouseHitbox.x = Gdx.input.getX();
         mouseHitbox.y = -Gdx.input.getY();
-        mouseHitbox.width = 10;
-        mouseHitbox.height = 10;
+        mouseHitbox.width = 100;
+        mouseHitbox.height = 50;
     }
 
     @Override
@@ -66,6 +65,8 @@ public class TeamSelectorScreen implements Screen {
 
     float rebelVolume = 1, empireVolume = 1;
     float rebelLogoPosMax = 420, rebelLogoPosMin = 400, rebelLogoPos = 400;
+    boolean rebelSoundPlaying, imperialSoundPlaying;
+    long rebelSoundID, empireSoundID;
 
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
@@ -73,36 +74,21 @@ public class TeamSelectorScreen implements Screen {
 
         if (mouseHitbox.overlaps(rebelHitbox)){
            if (!rebelSoundPlaying){
-               rebelSoundPlaying = true;
-               rebelSound.stop();
-               imperialSound.stop();
-               rebelVolume = 0;
-               rebelSoundID = rebelSound.play(rebelVolume);
+                rebelSoundPlaying = true;
+                imperialSound.stop();
+                rebelSound.play(.3f);
+                //TODO finish sound fading stuff
            }
-           if (rebelLogoPos < rebelLogoPosMax){
-               rebelLogoPos += .5;
-           }
-           if (rebelLogoPos > rebelLogoPosMax) {
-                rebelLogoPos -= .5;
-           }//todo work on this
         }else {
-            rebelSoundPlaying = false;
-            rebelSound.setVolume(rebelSoundID,rebelVolume);
-            rebelVolume -= .01;
+
         }
 
         if (mouseHitbox.overlaps(imperialHitbox)){
             if (!imperialSoundPlaying){
-                imperialSoundPlaying = true;
-                imperialSound.stop();
-                rebelSound.stop();
-                empireVolume = 1;
-                empireSoundID = imperialSound.play(empireVolume);
+
             }
         }else {
-            imperialSoundPlaying = false;
-            imperialSound.setVolume(empireSoundID,empireVolume);
-            empireVolume -= .01;
+
         }  
     }
 
