@@ -1,7 +1,6 @@
 package ghozti.deathstarrun.screens;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -65,22 +64,48 @@ public class TeamSelectorScreen implements Screen {
 
     float rebelVolume = 1, empireVolume = 1;
     float rebelLogoPosMax = 420, rebelLogoPosMin = 400, rebelLogoPos = 400;
-    boolean rebelSoundPlaying, imperialSoundPlaying;
+    boolean rebelSoundPlaying, imperialSoundPlaying, rebelLogoGoingUp, rebelLogoGoingDown, empireLogoGoingUp, empireLogoGoingDown;
     long rebelSoundID, empireSoundID;
 
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
         mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)height);
-
         if (mouseHitbox.overlaps(rebelHitbox)){
+
+            if (rebelLogoPos <= rebelLogoPosMax){
+                if (!rebelLogoGoingDown) {
+                    rebelLogoGoingUp = true;
+                }
+            }else {
+                rebelLogoGoingDown = true;
+                rebelLogoGoingUp = false;
+            }
+
+            if (rebelLogoPos <= rebelLogoPosMin){
+                rebelLogoGoingDown = false;
+            }
+
+            if (rebelLogoGoingUp){
+                rebelLogoPos += .5;
+            }
+            if (rebelLogoGoingDown){
+                rebelLogoPos -= .5;
+            }
+
            if (!rebelSoundPlaying){
                 rebelSoundPlaying = true;
                 imperialSound.stop();
-                rebelSound.play(.3f);
-                //TODO finish sound fading stuff
+                rebelSound.stop();
+                rebelVolume = 1;
+                rebelSoundID = rebelSound.play(rebelVolume);
            }
         }else {
-
+            if (rebelVolume != 0){
+                rebelVolume -= .01;
+            }
+            rebelLogoPos = 400;
+            rebelSoundPlaying = false;
+            rebelSound.setVolume(rebelSoundID,rebelVolume);
         }
 
         if (mouseHitbox.overlaps(imperialHitbox)){
