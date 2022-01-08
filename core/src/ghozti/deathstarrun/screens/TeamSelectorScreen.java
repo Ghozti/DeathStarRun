@@ -53,8 +53,8 @@ public class TeamSelectorScreen implements Screen {
 
         mouseHitbox.x = Gdx.input.getX();
         mouseHitbox.y = -Gdx.input.getY();
-        mouseHitbox.width = 100;
-        mouseHitbox.height = 50;
+        mouseHitbox.width = 10;
+        mouseHitbox.height = 10;
     }
 
     @Override
@@ -63,13 +63,15 @@ public class TeamSelectorScreen implements Screen {
     }
 
     float rebelVolume = 1, empireVolume = 1;
-    float rebelLogoPosMax = 420, rebelLogoPosMin = 400, rebelLogoPos = 400;
+    float rebelLogoPosMax = 420, rebelLogoPosMin = 400, rebelLogoPos = 400, empireLogoPosMax = 420, empireLogoPosMin = 400, empireLogoPos = 400;
     boolean rebelSoundPlaying, imperialSoundPlaying, rebelLogoGoingUp, rebelLogoGoingDown, empireLogoGoingUp, empireLogoGoingDown;
     long rebelSoundID, empireSoundID;
 
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
         mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)height);
+
+        //REBEL LOGO LOGIC//////////////////////////////////////////////////////////////////////////////////////////////
         if (mouseHitbox.overlaps(rebelHitbox)){
 
             if (rebelLogoPos <= rebelLogoPosMax){
@@ -105,16 +107,51 @@ public class TeamSelectorScreen implements Screen {
             }
             rebelLogoPos = 400;
             rebelSoundPlaying = false;
-            rebelSound.setVolume(rebelSoundID,rebelVolume);
-        }
-
-        if (mouseHitbox.overlaps(imperialHitbox)){
             if (!imperialSoundPlaying){
+                rebelSound.setVolume(rebelSoundID,rebelVolume);
+            }
+        }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //IMPERIAL LOGO LOGIC///////////////////////////////////////////////////////////////////////////////////////////
+        if (mouseHitbox.overlaps(imperialHitbox)){
 
+            if (empireLogoPos <= empireLogoPosMax){
+                if (!empireLogoGoingDown) {
+                    empireLogoGoingUp = true;
+                }
+            }else {
+                empireLogoGoingDown = true;
+                empireLogoGoingUp = false;
+            }
+
+            if (empireLogoPos <= empireLogoPosMin){
+                empireLogoGoingDown = false;
+            }
+
+            if (empireLogoGoingUp){
+                empireLogoPos += .5;
+            }
+            if (empireLogoGoingDown){
+                empireLogoPos -= .5;
+            }
+
+            if (!imperialSoundPlaying){
+                imperialSoundPlaying = true;
+                rebelSound.stop();
+                imperialSound.stop();
+                empireVolume = 1;
+                empireSoundID = imperialSound.play(empireVolume);
             }
         }else {
-
-        }  
+            if (empireVolume != 0){
+                empireVolume -= .01;
+            }
+            imperialSoundPlaying = false;
+            empireLogoPos = 400;
+            if (!rebelSoundPlaying) {
+                imperialSound.setVolume(empireSoundID, empireVolume);
+            }
+        }
     }
 
     @Override
@@ -125,7 +162,7 @@ public class TeamSelectorScreen implements Screen {
             batch.begin();
             batch.draw(background, 0, 0, 1920, 1080);
             batch.draw(rebelLogo, 400, rebelLogoPos, 300, 300);
-            batch.draw(imperialLogo, 1120, 400, 300, 300);
+            batch.draw(imperialLogo, 1120, empireLogoPos, 300, 300);
             batch.draw(hitboxTexture, rebelHitbox.x, rebelHitbox.y, rebelHitbox.width, rebelHitbox.height);
             batch.draw(hitboxTexture, imperialHitbox.x, imperialHitbox.y, imperialHitbox.width, imperialHitbox.height);
             batch.draw(hitboxTexture, mouseHitbox.x, mouseHitbox.y, mouseHitbox.width, mouseHitbox.height);
