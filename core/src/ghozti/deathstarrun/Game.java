@@ -6,15 +6,23 @@ import ghozti.deathstarrun.screens.TeamSelectorScreen;
 
 public class Game extends com.badlogic.gdx.Game {
 
-	boolean startGame, gameStarted;
+	boolean gameStarted;
 
 	@Override
 	public void create () {
 		setScreen(new TeamSelectorScreen());
 	}
 
+	public void update(){
+		if (!TeamSelectorScreen.teamSelected.isEmpty() && !gameStarted){
+			setScreen(new MainScreen());
+			gameStarted = true;
+		}
+	}
+
 	@Override
 	public void render() {
+		update();
 		super.render();
 	}
 
