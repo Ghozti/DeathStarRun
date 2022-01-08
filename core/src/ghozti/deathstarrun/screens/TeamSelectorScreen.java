@@ -1,6 +1,7 @@
 package ghozti.deathstarrun.screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
@@ -74,6 +75,12 @@ public class TeamSelectorScreen implements Screen {
         //REBEL LOGO LOGIC//////////////////////////////////////////////////////////////////////////////////////////////
         if (mouseHitbox.overlaps(rebelHitbox)){
 
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+                teamSelected = "Rebels";
+                screenDisposed = true;
+                rebelSound.stop();
+            }
+
             if (rebelLogoPos <= rebelLogoPosMax){
                 if (!rebelLogoGoingDown) {
                     rebelLogoGoingUp = true;
@@ -114,6 +121,12 @@ public class TeamSelectorScreen implements Screen {
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //IMPERIAL LOGO LOGIC///////////////////////////////////////////////////////////////////////////////////////////
         if (mouseHitbox.overlaps(imperialHitbox)){
+
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+                teamSelected = "Empire";
+                screenDisposed = true;
+                imperialSound.stop();
+            }
 
             if (empireLogoPos <= empireLogoPosMax){
                 if (!empireLogoGoingDown) {
@@ -156,9 +169,9 @@ public class TeamSelectorScreen implements Screen {
 
     @Override
     public void render(float delta) {
+        ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
         if (!screenDisposed) {
             update();
-            ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
             batch.begin();
             batch.draw(background, 0, 0, 1920, 1080);
             batch.draw(rebelLogo, 400, rebelLogoPos, 300, 300);
