@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.deathstarrun.utils.Atlas;
+import ghozti.deathstarrun.utils.Constants;
 import ghozti.deathstarrun.utils.Font;
 
 public class TeamSelectorScreen implements Screen {
@@ -173,7 +174,7 @@ public class TeamSelectorScreen implements Screen {
         if (!screenDisposed) {
             update();
             batch.begin();
-            batch.draw(background, 0, 0, 1920, 1080);
+            batch.draw(background, 0, 0, Constants.Screen.WIDTH, Constants.Screen.HEIGHT);
             batch.draw(rebelLogo, 400, rebelLogoPos, 300, 300);
             batch.draw(imperialLogo, 1120, empireLogoPos, 300, 300);
             batch.draw(hitboxTexture, rebelHitbox.x, rebelHitbox.y, rebelHitbox.width, rebelHitbox.height);

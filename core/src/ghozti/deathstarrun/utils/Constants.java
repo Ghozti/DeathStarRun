@@ -19,6 +19,11 @@ public class Constants {
         public static final float SPEED_INCREASE_RATE = .2F;
     }
 
+    public static class Screen{
+        public static final float WIDTH = 1920;
+        public static final float HEIGHT = 1080;
+    }
+
     // FOR DIFFERENT SHIPS
 
     public static class ShipIDs{

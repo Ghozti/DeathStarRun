@@ -23,13 +23,15 @@ public class MainScreen implements Screen {
     //game objects
     BackGround backGround;
     Player player;
+    String team;
 
-    public MainScreen(){
+    public MainScreen(String team){
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
-        viewport = new StretchViewport(1920,1080,camera);
+        viewport = new StretchViewport(Constants.Screen.WIDTH,Constants.Screen.HEIGHT,camera);
 
         //game objects
+        this.team = team;
         backGround = new BackGround();
         player = new Player(new Sprite(Atlas.getX_WING()),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
     }

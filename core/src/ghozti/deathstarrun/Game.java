@@ -15,7 +15,7 @@ public class Game extends com.badlogic.gdx.Game {
 
 	public void update(){
 		if (!TeamSelectorScreen.teamSelected.isEmpty() && !gameStarted){
-			setScreen(new MainScreen());
+			setScreen(new MainScreen(TeamSelectorScreen.teamSelected));
 			gameStarted = true;
 		}
 	}
