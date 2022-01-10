@@ -11,7 +11,7 @@ import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
 import ghozti.deathstarrun.utils.Font;
-import ghozti.deathstarrun.utils.saver.SaverTester;
+import ghozti.deathstarrun.utils.saver.GameSaver;
 
 public class TeamSelectorScreen implements Screen {
 
@@ -29,6 +29,8 @@ public class TeamSelectorScreen implements Screen {
     //TODO master the sound
 
     public TeamSelectorScreen(){
+        GameSaver saver = new GameSaver();
+        saver.main();
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
         rebelLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/rebel.png"));
         imperialLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/empire.png"));
