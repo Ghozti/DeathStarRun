@@ -11,14 +11,17 @@ import java.util.Scanner;
 
 public class GameSaver {
 
-    public void main() {
-        SavedPlayerData playerData = new SavedPlayerData();
-        playerData.savedShipsIDs.add("123");
-        playerData.savedShipsIDs.add("456");
-        playerData.highestScore = 10;
+    public static SavedPlayerData data = new SavedPlayerData();
+
+    public static void saveGameState(){
         Json json = new Json();
         json.setOutputType(JsonWriter.OutputType.json);
-        FileHandle handle = Gdx.files.local("core/assets/test.json");
-        handle.writeString(json.toJson(playerData),false);
+        FileHandle handle = Gdx.files.local("core/assets/save.json");
+        handle.writeString(json.toJson(data),false);
+    }
+
+    public static void loadGameData(){
+        Json json = new Json();
+        data = json.fromJson(data.getClass(), Gdx.files.internal("core/assets/save.json"));
     }
 }

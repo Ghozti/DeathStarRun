@@ -29,8 +29,6 @@ public class TeamSelectorScreen implements Screen {
     //TODO master the sound
 
     public TeamSelectorScreen(){
-        GameSaver saver = new GameSaver();
-        saver.main();
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
         rebelLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/rebel.png"));
         imperialLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/empire.png"));
