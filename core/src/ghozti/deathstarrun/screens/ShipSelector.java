@@ -9,13 +9,15 @@ import com.badlogic.gdx.utils.ScreenUtils;
 public class ShipSelector implements Screen {
 
     SpriteBatch batch;
-    Texture backGround;
-    Texture ship;
+    Texture backGround,ship,leftArrow,rigthArrow, hitboxTexture;
     String teamSelected;
 
     public ShipSelector(String teamSelected){
         batch = new SpriteBatch();
         backGround = new Texture(Gdx.files.internal("core/assets/death-star-runAssets/teamSelectorBG.png"));
+        leftArrow = new Texture(Gdx.files.internal("core/assets/death-star-runAssets/leftArrow1.png"));
+        rigthArrow = new Texture(Gdx.files.internal("core/assets/death-star-runAssets/rightArrow1.png"));
+        if (teamSelected.equals("Rebels"))
         this.teamSelected = teamSelected;
     }
 

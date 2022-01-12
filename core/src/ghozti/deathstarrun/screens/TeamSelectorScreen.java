@@ -26,18 +26,18 @@ public class TeamSelectorScreen implements Screen {
 
     public static String teamSelected = "";
 
-    //TODO master the sound
+    //TODO add textures to atlas
 
     public TeamSelectorScreen(){
         background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
         rebelLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/rebel.png"));
         imperialLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/empire.png"));
         hitboxTexture = Atlas.getHitbox();
-        width = 1920;
-        height = 1080;
+        width = Constants.Screen.WIDTH;
+        height = Constants.Screen.HEIGHT;
         batch = new SpriteBatch();
-        rebelSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/death-star-run-startAssets/rebelSound.mp3"));
-        imperialSound = Gdx.audio.newSound(Gdx.files.internal("core/assets/death-star-run-startAssets/imperialMarch.mp3"));
+        rebelSound = Gdx.audio.newSound(Gdx.files.internal(Constants.Paths.REBEL_SOUND));
+        imperialSound = Gdx.audio.newSound(Gdx.files.internal(Constants.Paths.IMPERIAL_SOUND));
         rebelHitbox = new com.badlogic.gdx.math.Rectangle();
         imperialHitbox = new com.badlogic.gdx.math.Rectangle();
         mouseHitbox = new com.badlogic.gdx.math.Rectangle();
@@ -78,7 +78,7 @@ public class TeamSelectorScreen implements Screen {
         if (mouseHitbox.overlaps(rebelHitbox)){
 
             if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
-                teamSelected = "Rebels";
+                teamSelected = Constants.Teams.REBELS;
                 screenDisposed = true;
                 rebelSound.stop();
             }
@@ -125,7 +125,7 @@ public class TeamSelectorScreen implements Screen {
         if (mouseHitbox.overlaps(imperialHitbox)){
 
             if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
-                teamSelected = "Empire";
+                teamSelected = Constants.Teams.IMPERIALS;
                 screenDisposed = true;
                 imperialSound.stop();
             }
@@ -169,6 +169,12 @@ public class TeamSelectorScreen implements Screen {
         }
     }
 
+    //constant vals for the render method
+    private final float rebelLogoX = 400, rebelLogoWidth = 300, rebelLogoHeight = 300;
+    private final float imperialLogoX = 1120, imperialLogoWidth = 300, imperialLogoHeight = 300;
+    private final float rebelFontX = 315, rebelFontY = 300;
+    private final float empireFontX = 1120, empireFontY = 300;
+
     @Override
     public void render(float delta) {
         ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
@@ -176,14 +182,14 @@ public class TeamSelectorScreen implements Screen {
             update();
             batch.begin();
             batch.draw(background, 0, 0, Constants.Screen.WIDTH, Constants.Screen.HEIGHT);
-            batch.draw(rebelLogo, 400, rebelLogoPos, 300, 300);
-            batch.draw(imperialLogo, 1120, empireLogoPos, 300, 300);
+            batch.draw(rebelLogo, rebelLogoX, rebelLogoPos, rebelLogoWidth, rebelLogoHeight);
+            batch.draw(imperialLogo, imperialLogoX, empireLogoPos, imperialLogoWidth, imperialLogoHeight);
             batch.draw(hitboxTexture, rebelHitbox.x, rebelHitbox.y, rebelHitbox.width, rebelHitbox.height);
             batch.draw(hitboxTexture, imperialHitbox.x, imperialHitbox.y, imperialHitbox.width, imperialHitbox.height);
             batch.draw(hitboxTexture, mouseHitbox.x, mouseHitbox.y, mouseHitbox.width, mouseHitbox.height);
 
-            font.draw(batch, "Rebellion", 315, 300, 0, false);
-            font.draw(batch, "Empire",1120,300,0,false);
+            font.draw(batch, "Rebellion", rebelFontX, rebelFontY, 0, false);
+            font.draw(batch, "Empire",empireFontX,empireFontY,0,false);
             batch.end();
         }
     }

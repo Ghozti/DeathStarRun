@@ -24,7 +24,18 @@ public class Constants {
         public static final float HEIGHT = 1080;
     }
 
+    public static class Paths{
+        public static final String SAVED_PLAYER_DATA = "core/assets/save.json";
+        public static final String REBEL_SOUND = "core/assets/death-star-run-startAssets/rebelSound.mp3";
+        public static final String IMPERIAL_SOUND = "core/assets/death-star-run-startAssets/imperialMarch.mp3";
+    }
+
     // FOR DIFFERENT SHIPS
+
+    public static class Teams{
+        public static final String REBELS = "Rebels";
+        public static final String IMPERIALS = "Empire";
+    }
 
     public static class ShipIDs{
         public static final int X_WING = 0;
