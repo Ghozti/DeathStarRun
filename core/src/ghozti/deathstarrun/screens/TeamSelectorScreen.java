@@ -49,7 +49,7 @@ public class TeamSelectorScreen implements Screen {
         rebelHitbox.width = 300;
         rebelHitbox.height = 300;
 
-        imperialHitbox.x = 1120;
+        imperialHitbox.x = 1220;
         imperialHitbox.y = 400;
         imperialHitbox.width = 300;
         imperialHitbox.height = 300;
@@ -171,9 +171,9 @@ public class TeamSelectorScreen implements Screen {
 
     //constant vals for the render method
     private final float rebelLogoX = 400, rebelLogoWidth = 300, rebelLogoHeight = 300;
-    private final float imperialLogoX = 1120, imperialLogoWidth = 300, imperialLogoHeight = 300;
+    private final float imperialLogoX = 1220, imperialLogoWidth = 300, imperialLogoHeight = 300;
     private final float rebelFontX = 315, rebelFontY = 300;
-    private final float empireFontX = 1120, empireFontY = 300;
+    private final float empireFontX = 1220, empireFontY = 300;
 
     @Override
     public void render(float delta) {

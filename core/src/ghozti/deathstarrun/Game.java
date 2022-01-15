@@ -2,7 +2,9 @@ package ghozti.deathstarrun;
 
 import ghozti.deathstarrun.screens.MainScreen;
 import ghozti.deathstarrun.screens.MenuScreen;
+import ghozti.deathstarrun.screens.ShipSelector;
 import ghozti.deathstarrun.screens.TeamSelectorScreen;
+import ghozti.deathstarrun.utils.Constants;
 
 public class Game extends com.badlogic.gdx.Game {
 
@@ -10,14 +12,15 @@ public class Game extends com.badlogic.gdx.Game {
 
 	@Override
 	public void create () {
-		setScreen(new TeamSelectorScreen());
+		//setScreen(new TeamSelectorScreen());
+		setScreen(new ShipSelector(Constants.Teams.REBELS));
 	}
 
 	public void update(){
-		if (!TeamSelectorScreen.teamSelected.isEmpty() && !gameStarted){
-			setScreen(new MainScreen(TeamSelectorScreen.teamSelected));
-			gameStarted = true;
-		}
+		//if (!TeamSelectorScreen.teamSelected.isEmpty() && !gameStarted){
+		//	setScreen(new MainScreen(TeamSelectorScreen.teamSelected));
+		//	gameStarted = true;
+		//}
 	}
 
 	@Override
