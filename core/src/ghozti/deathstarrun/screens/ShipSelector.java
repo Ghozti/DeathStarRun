@@ -89,13 +89,12 @@ public class ShipSelector implements Screen {
     private void handleArrowInput(){
         if (mouseHitbox.overlaps(leftArrowHitbox)){
             leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow2.png");
-            if (Gdx.input.isKeyPressed(Input.Keys.LEFT)){
-                System.out.println("***");
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
                 leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow3.png");
             }
         }else {
-            leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow1.png")
-;        }
+            leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow1.png");
+        }
     }
 
     private void updateMousePos(){
@@ -105,7 +104,7 @@ public class ShipSelector implements Screen {
 
     private static void setShipList(String team){
         if (team.equals(Constants.Teams.REBELS)){
-            
+
         }else if(team.equals(Constants.Teams.IMPERIALS)){
 
         }
