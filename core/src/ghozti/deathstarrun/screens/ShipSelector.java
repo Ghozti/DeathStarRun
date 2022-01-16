@@ -21,7 +21,7 @@ public class ShipSelector implements Screen {
     Texture backGround, leftArrow, rigthArrow;
     TextureRegion hitboxTexture;
     com.badlogic.gdx.math.Rectangle rightArrowHitbox, leftArrowHitbox, shipHitbox, mouseHitbox;
-    ArrayList<Texture> ships;
+    ArrayList<Texture> shipList;
 
     public ShipSelector(String teamSelected){
         this.teamSelected = teamSelected;
@@ -111,9 +111,9 @@ public class ShipSelector implements Screen {
         mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)Constants.Screen.HEIGHT);
     }
 
-    private static void setShipList(String team){
+    private void setShipList(String team){
         if (team.equals(Constants.Teams.REBELS)){
-
+            shipList.add(new Texture("core/assets/death-star-run-startAssets/rightArrow1.png"));
         }else if(team.equals(Constants.Teams.IMPERIALS)){
 
         }
