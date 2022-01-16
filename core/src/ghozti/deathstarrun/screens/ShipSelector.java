@@ -30,8 +30,8 @@ public class ShipSelector implements Screen {
         leftArrow = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/leftArrow1.png"));
         rigthArrow = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/rightArrow1.png"));
         hitboxTexture = Atlas.getHitbox();
-        leftArrowHitbox = new com.badlogic.gdx.math.Rectangle(120,480,220,220);
-        rightArrowHitbox =  new com.badlogic.gdx.math.Rectangle(1580,480,220,220);
+        leftArrowHitbox = new com.badlogic.gdx.math.Rectangle(120,430,220,220);
+        rightArrowHitbox =  new com.badlogic.gdx.math.Rectangle(1580,430,220,220);
         mouseHitbox = new Rectangle(Gdx.input.getX(),Math.abs(Gdx.input.getY() - (int) Constants.Screen.HEIGHT),10,10);
         if (teamSelected.equals(Constants.Teams.REBELS)){
 
@@ -94,6 +94,15 @@ public class ShipSelector implements Screen {
             }
         }else {
             leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow1.png");
+        }
+
+        if (mouseHitbox.overlaps(rightArrowHitbox)){
+            rigthArrow = new Texture("core/assets/death-star-run-startAssets/rightArrow2.png");
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+                rigthArrow = new Texture("core/assets/death-star-run-startAssets/rightArrow3.png");
+            }
+        }else {
+            rigthArrow = new Texture("core/assets/death-star-run-startAssets/rightArrow1.png");
         }
     }
 
