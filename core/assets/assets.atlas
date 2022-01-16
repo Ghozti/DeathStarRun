@@ -1,26 +1,152 @@
 
 assets.png
-size: 512, 256
+size: 4096, 256
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 bg
   rotate: false
-  xy: 256, 166
+  xy: 2804, 166
   size: 160, 90
   orig: 160, 90
   offset: 0, 0
   index: -1
+empire
+  rotate: false
+  xy: 500, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
 hitbox
   rotate: false
-  xy: 256, 102
+  xy: 2676, 64
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
-xwing
+leftArrow1
+  rotate: false
+  xy: 3028, 192
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+leftArrow2
+  rotate: false
+  xy: 2740, 64
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+leftArrow3
+  rotate: false
+  xy: 2676, 0
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+pixil-frame-0
+  rotate: false
+  xy: 2548, 0
+  size: 128, 128
+  orig: 128, 128
+  offset: 0, 0
+  index: -1
+pixil-frame-0 (3)
+  rotate: false
+  xy: 2804, 87
+  size: 60, 15
+  orig: 60, 15
+  offset: 0, 0
+  index: -1
+playHovered
+  rotate: false
+  xy: 2964, 177
+  size: 60, 15
+  orig: 60, 15
+  offset: 0, 0
+  index: -1
+rebel
+  rotate: false
+  xy: 1780, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+rightArrow1
+  rotate: false
+  xy: 2740, 0
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+rightArrow2
+  rotate: false
+  xy: 2964, 192
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+rightArrow3
+  rotate: false
+  xy: 2804, 102
+  size: 64, 64
+  orig: 64, 64
+  offset: 0, 0
+  index: -1
+teamSelectorBG
+  rotate: false
+  xy: 2548, 128
+  size: 256, 128
+  orig: 256, 128
+  offset: 0, 0
+  index: -1
+title
   rotate: false
   xy: 0, 0
+  size: 500, 256
+  orig: 500, 256
+  offset: 0, 0
+  index: -1
+xwing
+  rotate: false
+  xy: 756, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+xwingGold
+  rotate: false
+  xy: 1524, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+xwingGreen
+  rotate: false
+  xy: 1268, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+xwingOrange
+  rotate: false
+  xy: 2292, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+xwingPurple
+  rotate: false
+  xy: 1012, 0
+  size: 256, 256
+  orig: 256, 256
+  offset: 0, 0
+  index: -1
+xwingRed
+  rotate: false
+  xy: 2036, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0

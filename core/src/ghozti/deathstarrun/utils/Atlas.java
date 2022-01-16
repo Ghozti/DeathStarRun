@@ -17,10 +17,38 @@ public class Atlas {
         return ATLAS.findRegion("bg");
     }
 
+    public static TextureRegion getSTARBG(){return ATLAS.findRegion("teamSelectorBG");}
+
     public static TextureRegion getHitbox(){
         return ATLAS.findRegion("hitbox");
     }
 
-    public static TextureRegion getX_WING(){return ATLAS.findRegion("xwing");}
+    public static TextureRegion getX_WING_BLUE(){return ATLAS.findRegion("xwing");}
+
+    public static TextureRegion getX_WING_GOLD(){return ATLAS.findRegion("xwingGold");}
+
+    public static TextureRegion getX_WING_GREEN(){return ATLAS.findRegion("xwingGreen");}
+
+    public static TextureRegion getX_WING_ORANGE(){return ATLAS.findRegion("xwingOrange");}
+
+    public static TextureRegion getX_WING_PURPLE(){return ATLAS.findRegion("xwingPurple");}
+
+    public static TextureRegion getX_WING_RED(){return ATLAS.findRegion("xwingRed");}
+
+    public static TextureRegion getEMPIRE_LOGO(){return ATLAS.findRegion("empire");}
+
+    public static TextureRegion getREBEL_LOGO(){return ATLAS.findRegion("rebel");}
+
+    public static TextureRegion getLEFT_ARROW1(){return ATLAS.findRegion("leftArrow1");}
+
+    public static TextureRegion getLEFT_ARROW2(){return ATLAS.findRegion("leftArrow2");}
+
+    public static TextureRegion getLEFT_ARROW3(){return ATLAS.findRegion("leftArrow3");}
+
+    public static TextureRegion getRIGHT_ARROW1(){return ATLAS.findRegion("rightArrow1");}
+
+    public static TextureRegion getRIGHT_ARROW2(){return ATLAS.findRegion("rightArrow2");}
+
+    public static TextureRegion getRIGHT_ARROW3(){return ATLAS.findRegion("rightArrow3");}
 
 }

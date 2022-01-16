@@ -2,7 +2,6 @@ package ghozti.deathstarrun.screens;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
-import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -11,29 +10,29 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
-
-import java.awt.*;
 import java.util.ArrayList;
 
 public class ShipSelector implements Screen {
 
     String teamSelected;
     SpriteBatch batch;
-    Texture backGround, leftArrow, rigthArrow, currentShip;
+    TextureRegion backGround, leftArrow, rigthArrow, currentShip;
+    public static TextureRegion selectedShip;
     TextureRegion hitboxTexture;
     com.badlogic.gdx.math.Rectangle rightArrowHitbox, leftArrowHitbox, shipHitbox, mouseHitbox;
-    ArrayList<Texture> shipList;
+    ArrayList<TextureRegion> shipList;
+    boolean screenDisposed;
 
     public ShipSelector(String teamSelected){
         this.teamSelected = teamSelected;
         batch = new SpriteBatch();
-        backGround = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
-        leftArrow = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/leftArrow1.png"));
-        rigthArrow = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/rightArrow1.png"));
+        backGround = Atlas.getBackground();
+        leftArrow = Atlas.getLEFT_ARROW1();
+        rigthArrow = Atlas.getLEFT_ARROW2();
         hitboxTexture = Atlas.getHitbox();
         leftArrowHitbox = new Rectangle(120,430,220,220);
         rightArrowHitbox =  new Rectangle(1580,430,220,220);
-        shipHitbox = new Rectangle(560,140,800,800);
+        shipHitbox = new Rectangle(635,215,650,650);
         mouseHitbox = new Rectangle(Gdx.input.getX(),Math.abs(Gdx.input.getY() - (int) Constants.Screen.HEIGHT),10,10);
         setShipList(teamSelected);
     }
@@ -50,17 +49,19 @@ public class ShipSelector implements Screen {
 
     @Override
     public void render(float delta) {
-        update();
-        ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
-        batch.begin();
-        batch.draw(rigthArrow,rightArrowHitbox.x,rightArrowHitbox.y,rightArrowHitbox.width,rightArrowHitbox.height);
-        batch.draw(leftArrow,leftArrowHitbox.x,leftArrowHitbox.y,leftArrowHitbox.width,leftArrowHitbox.height);
-        batch.draw(currentShip,shipHitbox.x,shipHitbox.y,shipHitbox.width,shipHitbox.height);
-        batch.draw(hitboxTexture,mouseHitbox.x,mouseHitbox.y,mouseHitbox.width,mouseHitbox.height);
-        batch.draw(hitboxTexture,rightArrowHitbox.x,rightArrowHitbox.y,rightArrowHitbox.width,rightArrowHitbox.height);
-        batch.draw(hitboxTexture,shipHitbox.x,shipHitbox.y,shipHitbox.width,shipHitbox.height);
-        batch.draw(hitboxTexture,leftArrowHitbox.x,leftArrowHitbox.y,leftArrowHitbox.width,leftArrowHitbox.height);
-        batch.end();
+        if (!screenDisposed) {
+            update();
+            ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
+            batch.begin();
+            batch.draw(rigthArrow, rightArrowHitbox.x, rightArrowHitbox.y, rightArrowHitbox.width, rightArrowHitbox.height);
+            batch.draw(leftArrow, leftArrowHitbox.x, leftArrowHitbox.y, leftArrowHitbox.width, leftArrowHitbox.height);
+            batch.draw(currentShip, shipHitbox.x, shipHitbox.y, shipHitbox.width, shipHitbox.height);
+            batch.draw(hitboxTexture, mouseHitbox.x, mouseHitbox.y, mouseHitbox.width, mouseHitbox.height);
+            batch.draw(hitboxTexture, rightArrowHitbox.x, rightArrowHitbox.y, rightArrowHitbox.width, rightArrowHitbox.height);
+            batch.draw(hitboxTexture, shipHitbox.x, shipHitbox.y, shipHitbox.width, shipHitbox.height);
+            batch.draw(hitboxTexture, leftArrowHitbox.x, leftArrowHitbox.y, leftArrowHitbox.width, leftArrowHitbox.height);
+            batch.end();
+        }
     }
 
     @Override
@@ -80,7 +81,7 @@ public class ShipSelector implements Screen {
 
     @Override
     public void hide() {
-
+        screenDisposed = true;
     }
 
     @Override
@@ -93,9 +94,9 @@ public class ShipSelector implements Screen {
 
     private void handleArrowInput(){
         if (mouseHitbox.overlaps(leftArrowHitbox)){
-            leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow2.png");
+            leftArrow = Atlas.getLEFT_ARROW2();
             if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
-                leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow3.png");
+                leftArrow = Atlas.getLEFT_ARROW3();
                 if (!coolDown){
                     coolDown = true;
                     if (currentIndex > 0){
@@ -107,13 +108,13 @@ public class ShipSelector implements Screen {
                 coolDown = false;
             }
         }else {
-            leftArrow = new Texture("core/assets/death-star-run-startAssets/leftArrow1.png");
+            leftArrow = Atlas.getLEFT_ARROW1();
         }
 
         if (mouseHitbox.overlaps(rightArrowHitbox)){
-            rigthArrow = new Texture("core/assets/death-star-run-startAssets/rightArrow2.png");
+            rigthArrow = Atlas.getRIGHT_ARROW2();
             if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
-                rigthArrow = new Texture("core/assets/death-star-run-startAssets/rightArrow3.png");
+                rigthArrow = Atlas.getRIGHT_ARROW3();
                 if (!coolDown){
                     coolDown = true;
                     if (currentIndex < shipList.size()-1){
@@ -125,7 +126,14 @@ public class ShipSelector implements Screen {
                 coolDown = false;
             }
         }else {
-            rigthArrow = new Texture("core/assets/death-star-run-startAssets/rightArrow1.png");
+            rigthArrow = Atlas.getRIGHT_ARROW1();
+        }
+
+        if (mouseHitbox.overlaps(shipHitbox)){
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+                selectedShip = currentShip;
+                screenDisposed = true;
+            }
         }
     }
 
@@ -137,16 +145,16 @@ public class ShipSelector implements Screen {
     private void setShipList(String team){
         shipList = new ArrayList<>();
         if (team.equals(Constants.Teams.REBELS)){
-            shipList.add(new Texture("core/assets/death-star-run-startAssets/xwing.png"));
-            shipList.add(new Texture("core/assets/death-star-run-startAssets/xwingGold.png"));
-            shipList.add(new Texture("core/assets/death-star-run-startAssets/xwingGreen.png"));
-            shipList.add(new Texture("core/assets/death-star-run-startAssets/xwingOrange.png"));
-            shipList.add(new Texture("core/assets/death-star-run-startAssets/xwingPurple.png"));
-            shipList.add(new Texture("core/assets/death-star-run-startAssets/xwingRed.png"));
+            shipList.add(Atlas.getX_WING_BLUE());
+            shipList.add(Atlas.getX_WING_GOLD());
+            shipList.add(Atlas.getX_WING_GREEN());
+            shipList.add(Atlas.getX_WING_ORANGE());
+            shipList.add(Atlas.getX_WING_PURPLE());
+            shipList.add(Atlas.getX_WING_RED());
 
             currentShip = shipList.get(0);
         }else if(team.equals(Constants.Teams.IMPERIALS)){
-
+            //TODO do this
         }
     }
 }

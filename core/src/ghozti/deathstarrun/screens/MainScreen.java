@@ -4,6 +4,7 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
@@ -25,7 +26,7 @@ public class MainScreen implements Screen {
     Player player;
     String team;
 
-    public MainScreen(String team){
+    public MainScreen(TextureRegion ship){
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
         viewport = new StretchViewport(Constants.Screen.WIDTH,Constants.Screen.HEIGHT,camera);
@@ -33,7 +34,7 @@ public class MainScreen implements Screen {
         //game objects
         this.team = team;
         backGround = new BackGround();
-        player = new Player(new Sprite(Atlas.getX_WING()),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING);
+        player = new Player(new Sprite(ship),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING, ship);
     }
 
     @Override

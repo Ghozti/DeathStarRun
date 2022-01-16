@@ -4,18 +4,16 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
 import ghozti.deathstarrun.utils.Font;
-import ghozti.deathstarrun.utils.saver.GameSaver;
 
 public class TeamSelectorScreen implements Screen {
 
-    Texture background,rebelLogo,imperialLogo;
+    TextureRegion background,rebelLogo,imperialLogo;
     TextureRegion hitboxTexture;
     float width,height;
     SpriteBatch batch;
@@ -26,12 +24,10 @@ public class TeamSelectorScreen implements Screen {
 
     public static String teamSelected = "";
 
-    //TODO add textures to atlas
-
     public TeamSelectorScreen(){
-        background = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/teamSelectorBG.png"));
-        rebelLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/rebel.png"));
-        imperialLogo = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/empire.png"));
+        background = Atlas.getSTARBG();
+        rebelLogo = Atlas.getREBEL_LOGO();
+        imperialLogo = Atlas.getEMPIRE_LOGO();
         hitboxTexture = Atlas.getHitbox();
         width = Constants.Screen.WIDTH;
         height = Constants.Screen.HEIGHT;
