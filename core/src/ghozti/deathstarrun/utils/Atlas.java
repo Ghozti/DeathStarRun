@@ -53,7 +53,7 @@ public class Atlas {
 
     public static TextureRegion getRIGHT_ARROW3(){return ATLAS.findRegion("rightArrow3");}
 
-    public static TextureRegion getPLAY_BUTTON(){return ATLAS.findRegion("pixil-frame-0 (3)");}
+    public static TextureRegion getPLAY_BUTTON(){return ATLAS.findRegion("play");}
 
     public static TextureRegion getPLAY_BUTTON_HOVERED(){return ATLAS.findRegion("playHovered");}
 

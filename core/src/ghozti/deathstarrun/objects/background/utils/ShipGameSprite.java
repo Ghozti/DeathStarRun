@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
+import ghozti.deathstarrun.objects.entities.Laser;
 import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
 
@@ -24,8 +25,7 @@ public abstract class ShipGameSprite {
     protected TextureRegion region;
     protected float maxRotationValue, rotaionSpeed;
     protected int fighterID;
-    protected Texture laserTexture;
-    protected ArrayList<Rectangle> lasers;
+    public ArrayList<Laser> lasers;
 
     //constant textures
     TextureRegion hitboxTexture = Atlas.getHitbox();
@@ -134,15 +134,6 @@ public abstract class ShipGameSprite {
         }
     }
 
-    //**********
-    public void drawLasers(Batch batch){
-        batch.draw(laserTexture,lasers.get(0).x,lasers.get(0).y,lasers.get(0).width,lasers.get(0).height);
-        batch.draw(laserTexture,lasers.get(1).x,lasers.get(1).y,lasers.get(1).width,lasers.get(1).height);
-        if(debugMode) {
-            batch.draw(hitboxTexture, lasers.get(1).x,lasers.get(1).y,lasers.get(1).width,lasers.get(1).height);
-        }
-    }
-
     public void setFighterType(int fighterID){
         if (fighterID == Constants.ShipIDs.X_WING){
             speed = Constants.XWing.MAX_SPEED;
@@ -171,10 +162,10 @@ public abstract class ShipGameSprite {
         lasers = new ArrayList<>();
         switch (fighterID){
             case Constants.ShipIDs.X_WING:
-                laserTexture = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/xwingLaser.png"));
-                lasers.add(new Rectangle(getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),3,22.5f));
-                lasers.add(new Rectangle(getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),3,22.5f));
-                break;
+                lasers.add(new Laser(Atlas.getX_WING_LASER(),600,500,2,15,1.5f));
+                lasers.add(new Laser(Atlas.getX_WING_LASER(),500,500,2,15,1.5f));
+                //lasers.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f));
+                //lasers.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),2,15,1.5f));
             case Constants.ShipIDs.TIE_FIGHTER:
                 break;
         }

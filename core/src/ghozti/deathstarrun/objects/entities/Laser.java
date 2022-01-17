@@ -8,14 +8,17 @@ import ghozti.deathstarrun.utils.Atlas;
 
 public class Laser {
 
-    TextureRegion texture;
-    float scale;
-    Sprite sprite;
-    Rectangle hitbox;
+    private TextureRegion texture;
+    private float posArray[];
+    private float scale;
+    private Sprite sprite;
+    private Rectangle hitbox;
     boolean isOutOfScreen;
 
     public Laser(TextureRegion texture, float x, float y, float width, float height, float scale){
         this.texture = texture;
+
+        posArray = new float[]{x,y};
 
         this.scale = scale;
 
@@ -29,11 +32,11 @@ public class Laser {
         hitbox = new Rectangle(getHitBoxX(), getHitBoxY(), sprite.getWidth() * scale, sprite.getHeight() * scale);
     }
 
-    public void updateLaser(boolean isShot){
+    public void updateLaser(boolean isShot, float shipX, float shipY){
         if(isShot){
-
+            shoot();
         }else {
-
+            followShip(shipX,shipY);
         }
     }
 
@@ -57,9 +60,26 @@ public class Laser {
         return new float[] {sprite.getRotation(),5};
     }
 
-    private void changePosition(float xChange, float yChange){
-        sprite.setPosition(sprite.getX() + xChange, sprite.getY() + yChange);
-        hitbox.setPosition(getHitBoxX() + xChange, getHitBoxY() + yChange);
+    private void followShip(float x, float y){
+        posArray[0] = x;
+        posArray[1] = y;
+
+        hitbox.x = x;
+        hitbox.y = y;
+
+        sprite.setPosition(posArray[0],posArray[1]);
+    }
+
+    private void shoot(){
+        float xChange = calculatePositionChange()[0], yChange = calculatePositionChange()[1];
+
+        posArray[0] += xChange;
+        posArray[1] += yChange;
+
+        hitbox.x += xChange;
+        hitbox.y += yChange;
+
+        sprite.setPosition(posArray[0],posArray[1]);
     }
 
     public Rectangle getHitbox(){
