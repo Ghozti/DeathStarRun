@@ -1,152 +1,166 @@
 
 assets.png
-size: 4096, 256
+size: 4096, 512
 format: RGBA8888
 filter: Nearest, Nearest
 repeat: none
 bg
   rotate: false
-  xy: 2804, 166
+  xy: 2, 19
   size: 160, 90
   orig: 160, 90
   offset: 0, 0
   index: -1
+chooseYourSide
+  rotate: false
+  xy: 260, 224
+  size: 219, 15
+  orig: 219, 15
+  offset: 0, 0
+  index: -1
 empire
   rotate: false
-  xy: 500, 0
+  xy: 504, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 hitbox
   rotate: false
-  xy: 2676, 64
+  xy: 2568, 303
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 leftArrow1
   rotate: false
-  xy: 3028, 192
+  xy: 2830, 433
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 leftArrow2
   rotate: false
-  xy: 2740, 64
+  xy: 260, 158
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 leftArrow3
   rotate: false
-  xy: 2676, 0
+  xy: 2698, 433
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 pixil-frame-0
   rotate: false
-  xy: 2548, 0
+  xy: 2568, 369
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
-pixil-frame-0 (3)
+play
   rotate: false
-  xy: 2804, 87
+  xy: 481, 224
   size: 60, 15
   orig: 60, 15
   offset: 0, 0
   index: -1
 playHovered
   rotate: false
-  xy: 2964, 177
+  xy: 2, 2
   size: 60, 15
   orig: 60, 15
   offset: 0, 0
   index: -1
 rebel
   rotate: false
-  xy: 1780, 0
+  xy: 1794, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 rightArrow1
   rotate: false
-  xy: 2740, 0
+  xy: 2764, 433
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 rightArrow2
   rotate: false
-  xy: 2964, 192
+  xy: 164, 45
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 rightArrow3
   rotate: false
-  xy: 2804, 102
+  xy: 326, 158
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 teamSelectorBG
   rotate: false
-  xy: 2548, 128
+  xy: 2, 111
   size: 256, 128
   orig: 256, 128
   offset: 0, 0
   index: -1
 title
   rotate: false
-  xy: 0, 0
+  xy: 2, 241
   size: 500, 256
   orig: 500, 256
   offset: 0, 0
   index: -1
 xwing
   rotate: false
-  xy: 756, 0
+  xy: 762, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingGold
   rotate: false
-  xy: 1524, 0
+  xy: 1536, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingGreen
   rotate: false
-  xy: 1268, 0
+  xy: 1278, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
+xwingLaser
+  rotate: false
+  xy: 2568, 286
+  size: 2, 15
+  orig: 2, 15
+  offset: 0, 0
+  index: -1
 xwingOrange
   rotate: false
-  xy: 2292, 0
+  xy: 2310, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingPurple
   rotate: false
-  xy: 1012, 0
+  xy: 1020, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingRed
   rotate: false
-  xy: 2036, 0
+  xy: 2052, 241
   size: 256, 256
   orig: 256, 256
   offset: 0, 0

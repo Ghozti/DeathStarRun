@@ -57,4 +57,6 @@ public class Atlas {
 
     public static TextureRegion getPLAY_BUTTON_HOVERED(){return ATLAS.findRegion("playHovered");}
 
+    public static TextureRegion getX_WING_LASER(){return ATLAS.findRegion("xwingLaser");}
+
 }

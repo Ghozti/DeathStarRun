@@ -134,6 +134,7 @@ public abstract class ShipGameSprite {
         }
     }
 
+    //**********
     public void drawLasers(Batch batch){
         batch.draw(laserTexture,lasers.get(0).x,lasers.get(0).y,lasers.get(0).width,lasers.get(0).height);
         batch.draw(laserTexture,lasers.get(1).x,lasers.get(1).y,lasers.get(1).width,lasers.get(1).height);
@@ -165,6 +166,7 @@ public abstract class ShipGameSprite {
         }
     }
 
+    //****
     public void setLaserPosition(){
         lasers = new ArrayList<>();
         switch (fighterID){
