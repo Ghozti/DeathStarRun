@@ -21,7 +21,7 @@ public class ShipSelector implements Screen {
     TextureRegion hitboxTexture;
     com.badlogic.gdx.math.Rectangle rightArrowHitbox, leftArrowHitbox, shipHitbox, mouseHitbox;
     ArrayList<TextureRegion> shipList;
-    boolean screenDisposed;
+    boolean screenDisposed, coolDownActive;
 
     public ShipSelector(String teamSelected){
         this.teamSelected = teamSelected;
@@ -39,7 +39,7 @@ public class ShipSelector implements Screen {
 
     @Override
     public void show() {
-
+        coolDownActive = true;
     }
 
     public void update(){
@@ -47,9 +47,12 @@ public class ShipSelector implements Screen {
         handleArrowInput();
     }
 
+    float deltaRecorded = 0;
+
     @Override
     public void render(float delta) {
         if (!screenDisposed) {
+            updateTime();
             update();
             ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
             batch.begin();
@@ -95,7 +98,7 @@ public class ShipSelector implements Screen {
     private void handleArrowInput(){
         if (mouseHitbox.overlaps(leftArrowHitbox)){
             leftArrow = Atlas.getLEFT_ARROW2();
-            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT) && !coolDownActive){
                 leftArrow = Atlas.getLEFT_ARROW3();
                 if (!coolDown){
                     coolDown = true;
@@ -113,7 +116,7 @@ public class ShipSelector implements Screen {
 
         if (mouseHitbox.overlaps(rightArrowHitbox)){
             rigthArrow = Atlas.getRIGHT_ARROW2();
-            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT) && !coolDownActive){
                 rigthArrow = Atlas.getRIGHT_ARROW3();
                 if (!coolDown){
                     coolDown = true;
@@ -130,7 +133,7 @@ public class ShipSelector implements Screen {
         }
 
         if (mouseHitbox.overlaps(shipHitbox)){
-            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT) && !coolDownActive){
                 selectedShip = currentShip;
                 screenDisposed = true;
             }
@@ -155,6 +158,14 @@ public class ShipSelector implements Screen {
             currentShip = shipList.get(0);
         }else if(team.equals(Constants.Teams.IMPERIALS)){
             //TODO do this
+        }
+    }
+
+    private void updateTime(){
+        if (deltaRecorded >= 50){
+            coolDownActive = false;
+        }else {
+            deltaRecorded++;
         }
     }
 }

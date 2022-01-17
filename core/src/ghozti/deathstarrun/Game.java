@@ -8,15 +8,20 @@ import ghozti.deathstarrun.utils.Constants;
 
 public class Game extends com.badlogic.gdx.Game {
 
-	boolean switchedScreensToShipSelector, switchedScreensToMainGame;
+	boolean switchedScreensToTeamSelector,switchedScreensToShipSelector, switchedScreensToMainGame;
+
+	//TODO remember the mechanics of the game in Player, and GameSprite
 
 	@Override
 	public void create () {
-		setScreen(new TeamSelectorScreen());
-		//setScreen(new ShipSelector(Constants.Teams.REBELS));
+		setScreen(new MenuScreen());
 	}
 
 	public void update(){
+		if (MenuScreen.screenDisposed && !switchedScreensToTeamSelector){
+			setScreen(new TeamSelectorScreen());
+			switchedScreensToTeamSelector = true;
+		}
 		if (!TeamSelectorScreen.teamSelected.isEmpty() && !switchedScreensToShipSelector){
 			setScreen(new ShipSelector(TeamSelectorScreen.teamSelected));
 			switchedScreensToShipSelector = true;

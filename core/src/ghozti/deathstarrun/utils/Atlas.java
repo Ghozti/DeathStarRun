@@ -19,6 +19,8 @@ public class Atlas {
 
     public static TextureRegion getSTARBG(){return ATLAS.findRegion("teamSelectorBG");}
 
+    public static TextureRegion getTITLEBG(){return ATLAS.findRegion("title");}
+
     public static TextureRegion getHitbox(){
         return ATLAS.findRegion("hitbox");
     }
@@ -50,5 +52,9 @@ public class Atlas {
     public static TextureRegion getRIGHT_ARROW2(){return ATLAS.findRegion("rightArrow2");}
 
     public static TextureRegion getRIGHT_ARROW3(){return ATLAS.findRegion("rightArrow3");}
+
+    public static TextureRegion getPLAY_BUTTON(){return ATLAS.findRegion("pixil-frame-0 (3)");}
+
+    public static TextureRegion getPLAY_BUTTON_HOVERED(){return ATLAS.findRegion("playHovered");}
 
 }

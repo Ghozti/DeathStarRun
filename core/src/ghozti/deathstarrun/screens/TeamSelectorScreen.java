@@ -58,13 +58,15 @@ public class TeamSelectorScreen implements Screen {
 
     @Override
     public void show() {
-
+        coolDownActive = true;
     }
 
     float rebelVolume = 1, empireVolume = 1;
     float rebelLogoPosMax = 420, rebelLogoPosMin = 400, rebelLogoPos = 400, empireLogoPosMax = 420, empireLogoPosMin = 400, empireLogoPos = 400;
     boolean rebelSoundPlaying, imperialSoundPlaying, rebelLogoGoingUp, rebelLogoGoingDown, empireLogoGoingUp, empireLogoGoingDown;
     long rebelSoundID, empireSoundID;
+
+    boolean coolDownActive;
 
     public void update(){
         mouseHitbox.x = Gdx.input.getX();
@@ -73,7 +75,7 @@ public class TeamSelectorScreen implements Screen {
         //REBEL LOGO LOGIC//////////////////////////////////////////////////////////////////////////////////////////////
         if (mouseHitbox.overlaps(rebelHitbox)){
 
-            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT) && !coolDownActive){
                 teamSelected = Constants.Teams.REBELS;
                 screenDisposed = true;
                 rebelSound.stop();
@@ -120,7 +122,7 @@ public class TeamSelectorScreen implements Screen {
         //IMPERIAL LOGO LOGIC///////////////////////////////////////////////////////////////////////////////////////////
         if (mouseHitbox.overlaps(imperialHitbox)){
 
-            if (Gdx.input.isButtonPressed(Input.Keys.LEFT)){
+            if (Gdx.input.isButtonPressed(Input.Keys.LEFT) && !coolDownActive){
                 teamSelected = Constants.Teams.IMPERIALS;
                 screenDisposed = true;
                 imperialSound.stop();
@@ -171,10 +173,13 @@ public class TeamSelectorScreen implements Screen {
     private final float rebelFontX = 315, rebelFontY = 300;
     private final float empireFontX = 1220, empireFontY = 300;
 
+    float deltaRecorded;
+
     @Override
     public void render(float delta) {
-        ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
         if (!screenDisposed) {
+            ScreenUtils.clear(0, 0, 0, 1);// will reset the screen to black
+            updateTime();
             update();
             batch.begin();
             batch.draw(background, 0, 0, Constants.Screen.WIDTH, Constants.Screen.HEIGHT);
@@ -215,5 +220,13 @@ public class TeamSelectorScreen implements Screen {
         batch.dispose();
         rebelSound.dispose();
         imperialSound.dispose();
+    }
+
+    private void updateTime(){
+        if (deltaRecorded >= 50){
+            coolDownActive = false;
+        }else {
+            deltaRecorded++;
+        }
     }
 }
