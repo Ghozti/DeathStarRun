@@ -18,7 +18,7 @@ public class Player extends ShipGameSprite {
     public void draw(Batch batch) {
         drawSprite(batch);
         drawLasers(batch);
-        drawHitBox(batch);
+        //drawHitBox(batch);
     }
 
     @Override

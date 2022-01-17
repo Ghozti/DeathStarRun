@@ -1,7 +1,7 @@
-package ghozti.deathstarrun.objects.background;
+package ghozti.deathstarrun.objects.background.environment;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
-import ghozti.deathstarrun.objects.background.objects.DeathStarTrench;
+import ghozti.deathstarrun.objects.background.environment.DeathStarTrench;
 
 public class BackGround {
 

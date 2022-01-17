@@ -9,9 +9,8 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
-import ghozti.deathstarrun.objects.background.BackGround;
+import ghozti.deathstarrun.objects.background.environment.BackGround;
 import ghozti.deathstarrun.objects.entities.Player;
-import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
 
 public class MainScreen implements Screen {

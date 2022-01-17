@@ -170,8 +170,8 @@ public abstract class ShipGameSprite {
         switch (fighterID){
             case Constants.ShipIDs.X_WING:
                 laserTexture = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/xwingLaser.png"));
-                lasers.add(new Rectangle(getHitBoxX() + (6.5f),getHitBoxY(),3,22.5f));
-                lasers.add(new Rectangle(getHitBoxX() + (375.5f),getHitBoxY(),3,22.5f));
+                lasers.add(new Rectangle(getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),3,22.5f));
+                lasers.add(new Rectangle(getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),3,22.5f));
                 break;
             case Constants.ShipIDs.TIE_FIGHTER:
                 break;
