@@ -32,9 +32,8 @@ public class MainScreen implements Screen {
         viewport = new StretchViewport(Constants.Screen.WIDTH,Constants.Screen.HEIGHT,camera);
 
         //game objects
-        this.team = team;
         backGround = new BackGround();
-        player = new Player(new Sprite(ship),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING, ship);
+        player = new Player(new Sprite(ship),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING, ship);//todo mak the player set the ship id
     }
 
     @Override

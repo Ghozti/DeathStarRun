@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.audio.Sound;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -14,6 +15,7 @@ import ghozti.deathstarrun.utils.Font;
 public class TeamSelectorScreen implements Screen {
 
     TextureRegion background,rebelLogo,imperialLogo;
+    Texture selectTeamTexture;
     TextureRegion hitboxTexture;
     float width,height;
     SpriteBatch batch;
@@ -28,6 +30,7 @@ public class TeamSelectorScreen implements Screen {
         background = Atlas.getSTARBG();
         rebelLogo = Atlas.getREBEL_LOGO();
         imperialLogo = Atlas.getEMPIRE_LOGO();
+        selectTeamTexture = new Texture("core/assets/death-star-run-startAssets/chooseYourSide.png");
         hitboxTexture = Atlas.getHitbox();
         width = Constants.Screen.WIDTH;
         height = Constants.Screen.HEIGHT;
@@ -183,6 +186,7 @@ public class TeamSelectorScreen implements Screen {
             update();
             batch.begin();
             batch.draw(background, 0, 0, Constants.Screen.WIDTH, Constants.Screen.HEIGHT);
+            batch.draw(selectTeamTexture, 450,800,1020,100);
             batch.draw(rebelLogo, rebelLogoX, rebelLogoPos, rebelLogoWidth, rebelLogoHeight);
             batch.draw(imperialLogo, imperialLogoX, empireLogoPos, imperialLogoWidth, imperialLogoHeight);
             batch.draw(hitboxTexture, rebelHitbox.x, rebelHitbox.y, rebelHitbox.width, rebelHitbox.height);

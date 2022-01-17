@@ -6,9 +6,9 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import ghozti.deathstarrun.utils.GameSprite;
+import ghozti.deathstarrun.objects.background.utils.ShipGameSprite;
 
-public class Player extends GameSprite {
+public class Player extends ShipGameSprite {
 
     public Player(Sprite sprite, float[] positionArray, float scale, float unscaledWidth, float unscaledHeight, float hitboxOffsetx, float hitboxOffsetY, Rectangle rectangle, boolean debugMode, int fighterID, TextureRegion region) {
         super(sprite, positionArray, scale, unscaledWidth, unscaledHeight, hitboxOffsetx, hitboxOffsetY, rectangle, debugMode, fighterID, region);
@@ -16,7 +16,8 @@ public class Player extends GameSprite {
 
     @Override
     public void draw(Batch batch) {
-        sprite.draw(batch);
+        drawSprite(batch);
+        drawLasers(batch);
         drawHitBox(batch);
     }
 
