@@ -162,10 +162,9 @@ public abstract class ShipGameSprite {
         lasers = new ArrayList<>();
         switch (fighterID){
             case Constants.ShipIDs.X_WING:
-                lasers.add(new Laser(Atlas.getX_WING_LASER(),600,500,2,15,5f));
-                lasers.add(new Laser(Atlas.getX_WING_LASER(),500,500,2,15,5f));
-                //lasers.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f));
-                //lasers.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),2,15,1.5f));
+                lasers.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f));
+                lasers.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),2,15,1.5f));
+                break;
             case Constants.ShipIDs.TIE_FIGHTER:
                 break;
         }

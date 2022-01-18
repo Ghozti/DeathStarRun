@@ -13,7 +13,7 @@ public class Laser {
     private float scale;
     private Sprite sprite;
     private Rectangle hitbox;
-    boolean isOutOfScreen;
+    boolean isOutOfScreen, shot;
 
     public Laser(TextureRegion texture, float x, float y, float width, float height, float scale){
         this.texture = texture;
@@ -33,10 +33,11 @@ public class Laser {
     }
 
     public void updateLaser(boolean isShot, float shipX, float shipY){
-        if(isShot){
-            //shoot();
+        if(isShot || shot){
+            shot = true;
+            shoot();
         }else {
-            //followShip(shipX,shipY);
+            followShip(shipX,shipY);
         }
     }
 
@@ -49,15 +50,19 @@ public class Laser {
     }
 
     public void rotate(float degrees){
-        sprite.rotate(degrees);
+        if (!shot) {
+            sprite.rotate(degrees);
+        }
     }
 
     public void setRotation(float degree){
-        sprite.setRotation(degree);
+        if (!shot) {
+            sprite.setRotation(degree);
+        }
     }
 
     private float[] calculatePositionChange(){
-        return new float[] {sprite.getRotation(),5};
+        return new float[] {-sprite.getRotation(), 5};
     }
 
     private void followShip(float x, float y){
@@ -73,8 +78,6 @@ public class Laser {
     private void shoot(){
         float xChange = calculatePositionChange()[0], yChange = calculatePositionChange()[1];
         //TODO WORK ON THIS
-        System.out.println(xChange);
-        System.out.println(yChange);
 
         posArray[0] += xChange;
         posArray[1] += yChange;
