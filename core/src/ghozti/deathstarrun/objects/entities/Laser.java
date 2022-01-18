@@ -34,14 +34,14 @@ public class Laser {
 
     public void updateLaser(boolean isShot, float shipX, float shipY){
         if(isShot){
-            shoot();
+            //shoot();
         }else {
-            followShip(shipX,shipY);
+            //followShip(shipX,shipY);
         }
     }
 
     public void draw(Batch batch){
-        batch.draw(texture,sprite.getX(), sprite.getHeight(),sprite.getWidth(),sprite.getHeight());
+        sprite.draw(batch);
     }
 
     public void drawHitBox(Batch batch){
@@ -72,6 +72,9 @@ public class Laser {
 
     private void shoot(){
         float xChange = calculatePositionChange()[0], yChange = calculatePositionChange()[1];
+        //TODO WORK ON THIS
+        System.out.println(xChange);
+        System.out.println(yChange);
 
         posArray[0] += xChange;
         posArray[1] += yChange;

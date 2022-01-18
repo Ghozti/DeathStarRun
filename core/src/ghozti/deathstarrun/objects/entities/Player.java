@@ -40,6 +40,9 @@ public class Player extends ShipGameSprite {
             xChange = speed;
             if (rightRotation <= maxRotationValue){
                 sprite.rotate(-rotaionSpeed);
+                for(Laser i : lasers){
+                    i.rotate(-rotaionSpeed);
+                }
                 rightRotation += rotaionSpeed;
                 leftRotation -= rotaionSpeed;
             }
@@ -47,6 +50,9 @@ public class Player extends ShipGameSprite {
             xChange = -speed;
             if (leftRotation <= maxRotationValue){
                 sprite.rotate(rotaionSpeed);
+                for(Laser i : lasers){
+                    i.rotate(rotaionSpeed);
+                }
                 leftRotation += rotaionSpeed;
                 rightRotation -= rotaionSpeed;
             }
