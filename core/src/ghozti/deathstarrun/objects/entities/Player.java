@@ -17,11 +17,11 @@ public class Player extends ShipGameSprite {
     @Override
     public void draw(Batch batch) {
         drawSprite(batch);
+        //drawHitBox(batch);
         for (Laser i : lasers){
             i.draw(batch);
             i.drawHitBox(batch);
         }
-        drawHitBox(batch);
     }
 
     @Override

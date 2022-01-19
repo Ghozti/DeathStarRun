@@ -10,17 +10,19 @@ public class Laser {
 
     private TextureRegion texture;
     private float posArray[];
-    private float scale;
+    private float scale, offsetX, offsetY;
     private Sprite sprite;
     private Rectangle hitbox;
     boolean isOutOfScreen, shot;
 
-    public Laser(TextureRegion texture, float x, float y, float width, float height, float scale){
+    public Laser(TextureRegion texture, float x, float y, float width, float height, float scale, float offsetX, float offsetY){
         this.texture = texture;
 
         posArray = new float[]{x,y};
 
         this.scale = scale;
+        this.offsetX = offsetX;
+        this.offsetY = offsetY;
 
         sprite = new Sprite(new TextureRegion(Atlas.getX_WING_LASER()));
         sprite.setOriginCenter();
@@ -62,15 +64,21 @@ public class Laser {
     }
 
     private float[] calculatePositionChange(){
-        return new float[] {-sprite.getRotation(), 5};
+        return new float[] {sprite.getRotation() < 0 ? 3.5f : sprite.getRotation() > 0 ? -3.5f : 0, 5};
     }
 
     private void followShip(float x, float y){
         posArray[0] = x;
         posArray[1] = y;
 
+        posArray[0] += offsetX;
+        posArray[1] += offsetY;
+
         hitbox.x = x;
         hitbox.y = y;
+
+        hitbox.x += offsetX;
+        hitbox.y += offsetY;
 
         sprite.setPosition(posArray[0],posArray[1]);
     }
