@@ -98,10 +98,10 @@ public class TeamSelectorScreen implements Screen {
             }
 
             if (rebelLogoGoingUp){
-                rebelLogoPos += .5;
+                rebelLogoPos += 1;
             }
             if (rebelLogoGoingDown){
-                rebelLogoPos -= .5;
+                rebelLogoPos -= 1;
             }
 
            if (!rebelSoundPlaying){
@@ -145,10 +145,10 @@ public class TeamSelectorScreen implements Screen {
             }
 
             if (empireLogoGoingUp){
-                empireLogoPos += .5;
+                empireLogoPos += 1;
             }
             if (empireLogoGoingDown){
-                empireLogoPos -= .5;
+                empireLogoPos -= 1;
             }
 
             if (!imperialSoundPlaying){

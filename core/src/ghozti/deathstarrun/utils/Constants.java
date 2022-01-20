@@ -14,9 +14,9 @@ public class Constants {
     }
 
     public static class ScrollingBackGround{
-        public static final float MAX_SPEED = 6;
-        public static final float INIT_SPEED = 2;
-        public static final float SPEED_INCREASE_RATE = .2F;
+        public static final float MAX_SPEED = 12;
+        public static final float INIT_SPEED = 4;
+        public static final float SPEED_INCREASE_RATE = .4F;
     }
 
     public static class Screen{
@@ -43,14 +43,14 @@ public class Constants {
     }
 
     public static class XWing{
-        public static final float MAX_SPEED = 3;
+        public static final float MAX_SPEED = 6;
         public static final float MAX_ROTATION = 8;
-        public static final float ROTATION_SPEED = 0.08f;
+        public static final float ROTATION_SPEED = 0.16f;
     }
 
     public static class TieFighter{
-        public static final float MAX_SPEED = 6;
+        public static final float MAX_SPEED = 12;
         public static final float MAX_ROTATION = 8;
-        public static final float ROTATION_SPEED = 0.08f;
+        public static final float ROTATION_SPEED = 0.16f;
     }
 }

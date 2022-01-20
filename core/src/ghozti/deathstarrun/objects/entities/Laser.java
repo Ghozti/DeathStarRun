@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
 import ghozti.deathstarrun.utils.Atlas;
+import ghozti.deathstarrun.utils.Constants;
 
 public class Laser {
 
@@ -35,8 +36,10 @@ public class Laser {
     }
 
     public void updateLaser(boolean isShot, float shipX, float shipY){
-        if(isShot || shot){
+        if (isShot){
             shot = true;
+        }
+        if(shot){
             shoot();
         }else {
             followShip(shipX,shipY);
@@ -64,7 +67,7 @@ public class Laser {
     }
 
     private float[] calculatePositionChange(){
-        return new float[] {sprite.getRotation() < 0 ? 3.5f : sprite.getRotation() > 0 ? -3.5f : 0, 5};
+        return new float[] {-sprite.getRotation(), 5};
     }
 
     private void followShip(float x, float y){
@@ -94,6 +97,14 @@ public class Laser {
         hitbox.y += yChange;
 
         sprite.setPosition(posArray[0],posArray[1]);
+
+        if (isOutOfScreen()){
+            shot = false;
+        }
+    }
+
+    public boolean isOutOfScreen(){
+        return posArray[0] > Constants.Screen.WIDTH || posArray[0] < 0 || posArray[1] > Constants.Screen.HEIGHT || posArray[1] < 0;
     }
 
     public Rectangle getHitbox(){

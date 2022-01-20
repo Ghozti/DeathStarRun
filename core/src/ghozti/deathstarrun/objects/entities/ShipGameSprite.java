@@ -1,4 +1,4 @@
-package ghozti.deathstarrun.objects.background.utils;
+package ghozti.deathstarrun.objects.entities;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;

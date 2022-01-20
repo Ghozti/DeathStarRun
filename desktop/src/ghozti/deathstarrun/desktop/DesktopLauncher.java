@@ -11,8 +11,8 @@ public class DesktopLauncher {
 		config.resizable = false;
 		config.width = (int)Constants.Screen.WIDTH;
 		config.height = (int)Constants.Screen.HEIGHT;
-		config.foregroundFPS = 120;
-		config.backgroundFPS = 120;
+		config.foregroundFPS = 60;
+		config.backgroundFPS = 60;
 		config.title = "Death Star Run";
 		config.fullscreen = true;
 		new LwjglApplication(new Game(), config);
