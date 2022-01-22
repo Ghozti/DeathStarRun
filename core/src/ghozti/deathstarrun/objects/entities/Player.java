@@ -17,7 +17,7 @@ public class Player extends ShipGameSprite {
     public void draw(Batch batch) {
         drawSprite(batch);
         //drawHitBox(batch);
-        for (Laser i : lasers){
+        for (Laser i : laser_que1){
             i.draw(batch);
             i.drawHitBox(batch);
         }
@@ -26,7 +26,7 @@ public class Player extends ShipGameSprite {
     @Override
     public void update() {
         handleInput();
-        for (Laser i : lasers){
+        for (Laser i : laser_que1){
             i.updateLaser(Gdx.input.isKeyPressed(Input.Keys.SPACE),getPositionArray()[0],getPositionArray()[1]);
         }
     }
@@ -39,7 +39,7 @@ public class Player extends ShipGameSprite {
             xChange = speed;
             if (rightRotation <= maxRotationValue){
                 sprite.rotate(-rotaionSpeed);
-                for(Laser i : lasers){
+                for(Laser i : laser_que1){
                     i.rotate(-rotaionSpeed);
                 }
                 rightRotation += rotaionSpeed;
@@ -49,7 +49,7 @@ public class Player extends ShipGameSprite {
             xChange = -speed;
             if (leftRotation <= maxRotationValue){
                 sprite.rotate(rotaionSpeed);
-                for(Laser i : lasers){
+                for(Laser i : laser_que1){
                     i.rotate(rotaionSpeed);
                 }
                 leftRotation += rotaionSpeed;
@@ -59,27 +59,27 @@ public class Player extends ShipGameSprite {
             if (rightRotation >= 0){
                 if ((int)rightRotation != 0){
                     sprite.rotate(rotaionSpeed);
-                    for(Laser i : lasers){
+                    for(Laser i : laser_que1){
                         i.rotate(rotaionSpeed);
                     }
                     rightRotation -= rotaionSpeed;
                     leftRotation += rotaionSpeed;
                 }else {
-                    for(Laser i : lasers){
+                    for(Laser i : laser_que1){
                         i.setRotation(0);
                     }
                 }
             }else if (leftRotation >= 0){
                 if ((int)leftRotation != 0){
                     sprite.rotate(-rotaionSpeed);
-                    for(Laser i : lasers){
+                    for(Laser i : laser_que1){
                         i.rotate(-rotaionSpeed);
                     }
                     leftRotation -= rotaionSpeed;
                     rightRotation += rotaionSpeed;
                 }else {
                     sprite.setRotation(0);
-                    for(Laser i : lasers){
+                    for(Laser i : laser_que1){
                         i.setRotation(0);
                     }
                 }
