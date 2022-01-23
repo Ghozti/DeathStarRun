@@ -16,11 +16,7 @@ public class Player extends ShipGameSprite {
     @Override
     public void draw(Batch batch) {
         drawSprite(batch);
-        //drawHitBox(batch);
-        for (Laser i : laser_que1){
-            i.draw(batch);
-            i.drawHitBox(batch);
-        }
+        drawHitBox(batch);
     }
 
     @Override
@@ -39,9 +35,6 @@ public class Player extends ShipGameSprite {
             xChange = speed;
             if (rightRotation <= maxRotationValue){
                 sprite.rotate(-rotaionSpeed);
-                for(Laser i : laser_que1){
-                    i.rotate(-rotaionSpeed);
-                }
                 rightRotation += rotaionSpeed;
                 leftRotation -= rotaionSpeed;
             }
@@ -49,9 +42,6 @@ public class Player extends ShipGameSprite {
             xChange = -speed;
             if (leftRotation <= maxRotationValue){
                 sprite.rotate(rotaionSpeed);
-                for(Laser i : laser_que1){
-                    i.rotate(rotaionSpeed);
-                }
                 leftRotation += rotaionSpeed;
                 rightRotation -= rotaionSpeed;
             }
@@ -59,15 +49,10 @@ public class Player extends ShipGameSprite {
             if (rightRotation >= 0){
                 if ((int)rightRotation != 0){
                     sprite.rotate(rotaionSpeed);
-                    for(Laser i : laser_que1){
-                        i.rotate(rotaionSpeed);
-                    }
                     rightRotation -= rotaionSpeed;
                     leftRotation += rotaionSpeed;
                 }else {
-                    for(Laser i : laser_que1){
-                        i.setRotation(0);
-                    }
+                    sprite.setRotation(0);
                 }
             }else if (leftRotation >= 0){
                 if ((int)leftRotation != 0){
@@ -79,9 +64,6 @@ public class Player extends ShipGameSprite {
                     rightRotation += rotaionSpeed;
                 }else {
                     sprite.setRotation(0);
-                    for(Laser i : laser_que1){
-                        i.setRotation(0);
-                    }
                 }
             }
         }
