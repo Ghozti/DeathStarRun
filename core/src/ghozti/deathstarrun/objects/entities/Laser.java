@@ -35,6 +35,22 @@ public class Laser {
         hitbox = new Rectangle(getHitBoxX(), getHitBoxY(), sprite.getWidth() * scale, sprite.getHeight() * scale);
     }
 
+    public void setOffsetX(float x){
+        offsetX = x;
+    }
+
+    public void setOffsetY(float y){
+        offsetX = y;
+    }
+
+    public float getOffsetX(){
+        return offsetX;
+    }
+
+    public float getOffsetY(){
+        return offsetY;
+    }
+
     public void updateLaser(boolean isShot, float shipX, float shipY){
         if (isShot){
             shot = true;

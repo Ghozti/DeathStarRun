@@ -4,7 +4,7 @@ import com.badlogic.gdx.graphics.g2d.Batch;
 
 public class LaserGroup {
 
-    Laser leftLaser, rightLaser;
+    private Laser leftLaser, rightLaser;
 
     public LaserGroup(Laser leftLaser, Laser rightLaser){
         this.leftLaser = leftLaser;
@@ -17,10 +17,14 @@ public class LaserGroup {
 
     public void rotateLeft(float rotation){
         leftLaser.rotate(rotation);
+        leftLaser.setOffsetX(leftLaser.getOffsetY()-1);
+        rightLaser.setOffsetX(rightLaser.getOffsetY()+1);
     }
 
     public void setRotateRight(float rotation){
         rightLaser.setRotation(rotation);
+        leftLaser.setOffsetY(leftLaser.getOffsetY()+1);
+        rightLaser.setOffsetX(rightLaser.getOffsetY()-1);
     }
 
     public void setRotateLeft(float rotation){

@@ -25,8 +25,7 @@ public abstract class ShipGameSprite {
     protected TextureRegion region;
     protected float maxRotationValue, rotaionSpeed;
     protected int fighterID;
-    public ArrayList<Laser> laser_que1;
-    public ArrayList<Laser> lasers_que2;
+    protected LaserGroup laserGroup;
 
     //constant textures
     TextureRegion hitboxTexture = Atlas.getHitbox();
@@ -160,13 +159,9 @@ public abstract class ShipGameSprite {
 
     //****
     public void setLaserPosition(){
-        laser_que1 = new ArrayList<>();
         switch (fighterID){
             case Constants.ShipIDs.X_WING:
-                laser_que1.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f, -56f,171f));
-                laser_que1.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f, -50f,171f));
-                laser_que1.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),2,15,1.5f,312f,171f));
-                laser_que1.add(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (375.5f),getHitBoxY()+ (230.5f),2,15,1.5f,320f,171f));
+                laserGroup = new LaserGroup(new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f, -56f,171f), new Laser(Atlas.getX_WING_LASER(),getHitBoxX() + (6.5f),getHitBoxY() + (230.5f),2,15,1.5f, 312f,171f));
                 break;
             case Constants.ShipIDs.TIE_FIGHTER:
                 break;

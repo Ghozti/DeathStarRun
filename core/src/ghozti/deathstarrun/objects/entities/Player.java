@@ -16,15 +16,15 @@ public class Player extends ShipGameSprite {
     @Override
     public void draw(Batch batch) {
         drawSprite(batch);
+        laserGroup.draw(batch);
         drawHitBox(batch);
+        laserGroup.drawLaserHitboxes(batch);
     }
 
     @Override
     public void update() {
         handleInput();
-        for (Laser i : laser_que1){
-            i.updateLaser(Gdx.input.isKeyPressed(Input.Keys.SPACE),getPositionArray()[0],getPositionArray()[1]);
-        }
+        laserGroup.update(Gdx.input.isKeyPressed(Input.Keys.SPACE),positionArray[0],positionArray[1]);
     }
 
     private float rightRotation, leftRotation;
@@ -57,9 +57,6 @@ public class Player extends ShipGameSprite {
             }else if (leftRotation >= 0){
                 if ((int)leftRotation != 0){
                     sprite.rotate(-rotaionSpeed);
-                    for(Laser i : laser_que1){
-                        i.rotate(-rotaionSpeed);
-                    }
                     leftRotation -= rotaionSpeed;
                     rightRotation += rotaionSpeed;
                 }else {
