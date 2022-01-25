@@ -11,24 +11,14 @@ public class LaserGroup {
         this.rightLaser = rightLaser;
     }
 
-    public void rotateRight(float rotation){
-        rightLaser.rotate(rotation);
+    public void rotateBoth(float rotate){
+        leftLaser.rotate(rotate);
+        rightLaser.rotate(rotate);
     }
 
-    public void rotateLeft(float rotation){
-        leftLaser.rotate(rotation);
-        leftLaser.setOffsetX(leftLaser.getOffsetY()-1);
-        rightLaser.setOffsetX(rightLaser.getOffsetY()+1);
-    }
-
-    public void setRotateRight(float rotation){
-        rightLaser.setRotation(rotation);
-        leftLaser.setOffsetY(leftLaser.getOffsetY()+1);
-        rightLaser.setOffsetX(rightLaser.getOffsetY()-1);
-    }
-
-    public void setRotateLeft(float rotation){
-        leftLaser.setRotation(rotation);
+    public void setRotateBoth(float rotate){
+        leftLaser.setRotation(rotate);
+        rightLaser.setRotation(rotate);
     }
 
     public void update(boolean lasersShot, float shipX, float shipY){

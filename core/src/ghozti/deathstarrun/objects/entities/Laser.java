@@ -83,6 +83,7 @@ public class Laser {
     }
 
     private float[] calculatePositionChange(){
+        //TODO work on this
         return new float[] {-sprite.getRotation(), 5};
     }
 
