@@ -89,7 +89,7 @@ public class Laser {
     }
 
     private void followShip(float x, float y){
-        posArray[0] = x + addedOffSet;
+        posArray[0] = x;
         posArray[1] = y + addedOffSet;
 
         posArray[0] += offsetX;
