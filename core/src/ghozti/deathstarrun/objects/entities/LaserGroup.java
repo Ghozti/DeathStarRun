@@ -12,6 +12,15 @@ public class LaserGroup {
     }
 
     public void rotateBoth(float rotate){
+        if (rotate < 0){//rotates right
+            if (leftLaser.addedOffSet <= 5){
+                leftLaser.addedOffSet += .5;
+            }
+        }else {//rotates left
+            if (leftLaser.addedOffSet > 0){
+                leftLaser.addedOffSet -= .5;
+            }
+        }
         leftLaser.rotate(rotate);
         rightLaser.rotate(rotate);
     }
