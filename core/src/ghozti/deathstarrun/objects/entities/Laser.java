@@ -12,7 +12,7 @@ public class Laser {
     private TextureRegion texture;
     private float posArray[];
     private float scale, offsetX, offsetY;
-    public float addedOffSet;
+    public float addedOffSetX, addedOffSetY;
     private Sprite sprite;
     private Rectangle hitbox;
     boolean isOutOfScreen, shot;
@@ -89,17 +89,17 @@ public class Laser {
     }
 
     private void followShip(float x, float y){
-        posArray[0] = x;
-        posArray[1] = y + addedOffSet;
+        posArray[0] = x + addedOffSetX;
+        posArray[1] = y + addedOffSetY;
 
         posArray[0] += offsetX;
-        posArray[1] += offsetY + addedOffSet;
+        posArray[1] += offsetY + addedOffSetY;
 
-        hitbox.x = x;
-        hitbox.y = y + addedOffSet;
+        hitbox.x = x + addedOffSetX;
+        hitbox.y = y + addedOffSetY;
 
-        hitbox.x += offsetX;
-        hitbox.y += offsetY + addedOffSet;
+        hitbox.x += offsetX + addedOffSetX;
+        hitbox.y += offsetY + addedOffSetY;
 
         sprite.setPosition(posArray[0],posArray[1]);
     }

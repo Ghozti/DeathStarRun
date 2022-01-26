@@ -31,11 +31,12 @@ public class Player extends ShipGameSprite {
 
     private void handleInput(){
         float xChange = 0, yChange = 0;
+        laserGroup.rotateBoth(sprite.getRotation());
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
             //xChange = speed;
             if (rightRotation <= maxRotationValue){
                 sprite.rotate(-rotaionSpeed);
-                laserGroup.rotateBoth(-rotaionSpeed);
+                //laserGroup.rotateBoth(sprite.getRotation());
                 rightRotation += rotaionSpeed;
                 leftRotation -= rotaionSpeed;
             }
@@ -43,28 +44,29 @@ public class Player extends ShipGameSprite {
             //xChange = -speed;
             if (leftRotation <= maxRotationValue){
                 sprite.rotate(rotaionSpeed);
-                laserGroup.rotateBoth(rotaionSpeed);
+                //laserGroup.rotateBoth(sprite.getRotation());
                 leftRotation += rotaionSpeed;
                 rightRotation -= rotaionSpeed;
             }
         }else{
-            if (rightRotation >= 0){
+            if (rightRotation > 0){
                 if ((int)rightRotation != 0){
                     sprite.rotate(rotaionSpeed);
-                    laserGroup.rotateBoth(rotaionSpeed);
+                    //laserGroup.rotateBoth(sprite.getRotation());
                     rightRotation -= rotaionSpeed;
                     leftRotation += rotaionSpeed;
                 }else {
                     sprite.setRotation(0);
                 }
-            }else if (leftRotation >= 0){
+            }else if (leftRotation > 0){
                 if ((int)leftRotation != 0){
                     sprite.rotate(-rotaionSpeed);
-                    laserGroup.rotateBoth(-rotaionSpeed);
+                    //laserGroup.rotateBoth(sprite.getRotation());
                     leftRotation -= rotaionSpeed;
                     rightRotation += rotaionSpeed;
                 }else {
                     sprite.setRotation(0);
+                    laserGroup.rotateBoth(0);
                 }
             }
         }

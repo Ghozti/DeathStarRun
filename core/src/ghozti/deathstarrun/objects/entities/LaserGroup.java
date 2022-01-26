@@ -13,18 +13,24 @@ public class LaserGroup {
 
     public void rotateBoth(float rotate){
         if (rotate < 0){//rotates right
-            if (leftLaser.addedOffSet <= 5){
-                leftLaser.addedOffSet += .5;
+            if (leftLaser.addedOffSetY <= 5){
+                leftLaser.addedOffSetY += .5;
+            }
+            if (leftLaser.addedOffSetX <= 4){
+                leftLaser.addedOffSetX += .2;
             }
         }else if (rotate > 0){//rotates left
-            if (leftLaser.addedOffSet > 0){
-                leftLaser.addedOffSet -= .5;
+            if (leftLaser.addedOffSetY > 0){
+                leftLaser.addedOffSetY -= .5;
+            }
+            if (leftLaser.addedOffSetX > 4){
+                leftLaser.addedOffSetX -= .2;
             }
         }else {
-            leftLaser.addedOffSet = 0;
+            leftLaser.addedOffSetY = 0;
         }
-        leftLaser.rotate(rotate);
-        rightLaser.rotate(rotate);
+        leftLaser.setRotation(rotate);
+        rightLaser.setRotation(rotate);
     }
 
     public void setRotateBoth(float rotate){
