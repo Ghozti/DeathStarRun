@@ -16,8 +16,17 @@ public class LaserGroup {
             if (leftLaser.addedOffSetY <= 5){
                 leftLaser.addedOffSetY += .5;
             }
+
+            if (rightLaser.addedOffSetY >= -15){
+                rightLaser.addedOffSetY -= .5;
+            }
+
             if (leftLaser.addedOffSetX <= 4){
                 leftLaser.addedOffSetX += .2;
+            }
+
+            if (rightLaser.addedOffSetX <= 4){
+                rightLaser.addedOffSetX += .2;
             }
         }else if (rotate > 0){//rotates left
             if (leftLaser.addedOffSetY > 0){
@@ -34,6 +43,9 @@ public class LaserGroup {
         }else {
             leftLaser.addedOffSetY = 0;
             leftLaser.addedOffSetX = 0;
+
+            rightLaser.addedOffSetY = 0;
+            rightLaser.addedOffSetX = 0;
         }
         leftLaser.setRotation(rotate);
         rightLaser.setRotation(rotate);

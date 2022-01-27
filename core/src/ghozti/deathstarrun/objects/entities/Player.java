@@ -33,14 +33,14 @@ public class Player extends ShipGameSprite {
         float xChange = 0, yChange = 0;
         laserGroup.rotateBoth(sprite.getRotation());
         if (Gdx.input.isKeyPressed(Input.Keys.D)){
-            xChange = speed;
+            //xChange = speed;
             if (rightRotation <= maxRotationValue){
                 sprite.rotate(-rotaionSpeed);
                 rightRotation += rotaionSpeed;
                 leftRotation -= rotaionSpeed;
             }
         }else if (Gdx.input.isKeyPressed(Input.Keys.A)){
-            xChange = -speed;
+            //xChange = -speed;
             if (leftRotation <= maxRotationValue){
                 sprite.rotate(rotaionSpeed);
                 leftRotation += rotaionSpeed;
