@@ -11,6 +11,8 @@ public class LaserGroup {
         this.rightLaser = rightLaser;
     }
 
+    boolean turningLeft = false, stabalizingLeft = false;
+
     public void rotateBoth(float rotate){
         if (rotate < 0){//rotates right
             if (leftLaser.addedOffSetY <= 5){
@@ -25,6 +27,12 @@ public class LaserGroup {
             }
             if (leftLaser.addedOffSetX > 4){
                 leftLaser.addedOffSetX -= .2;
+            }
+
+            if (leftLaser.addedOffSetY == 0 || leftLaser.addedOffSetY > -15){
+                leftLaser.addedOffSetY -= .5;
+                leftLaser.addedOffSetX -= .2;
+                turningLeft = true;
             }
         }else {
             leftLaser.addedOffSetY = 0;
