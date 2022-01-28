@@ -83,9 +83,13 @@ public class Laser {
         }
     }
 
-    private float[] calculatePositionChange(){
-        //TODO work on this
-        return new float[] {-sprite.getRotation(), 5};
+    float shotYChange, shotXChange;
+
+    public void setPositionChange(float x, float y){
+        if (!shot){
+            shotXChange = x;
+            shotYChange = y;
+        }
     }
 
     private void followShip(float x, float y){
@@ -105,7 +109,7 @@ public class Laser {
     }
 
     private void shoot(){
-        float xChange = calculatePositionChange()[0], yChange = calculatePositionChange()[1];
+        float xChange = shotXChange, yChange = shotYChange;
         //TODO WORK ON THIS
 
         posArray[0] += xChange;

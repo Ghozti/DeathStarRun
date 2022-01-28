@@ -47,6 +47,8 @@ public class LaserGroup {
             rightLaser.addedOffSetY = 0;
             rightLaser.addedOffSetX = 0;
         }
+        leftLaser.setPositionChange(leftLaser.addedOffSetX,5);
+        rightLaser.setPositionChange(rightLaser.addedOffSetX,5);
         leftLaser.setRotation(rotate);
         rightLaser.setRotation(rotate);
     }
