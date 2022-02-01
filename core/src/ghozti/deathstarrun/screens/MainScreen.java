@@ -1,7 +1,10 @@
 package ghozti.deathstarrun.screens;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -25,6 +28,12 @@ public class MainScreen implements Screen {
     Player player;
     String team;
 
+    boolean pause;
+    float deltaRecorded;
+    boolean clickCoolDown;
+
+    Texture opacity = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/opacity.png"));
+
     public MainScreen(TextureRegion ship){
         batch = new SpriteBatch();
         camera = new OrthographicCamera();
@@ -37,10 +46,19 @@ public class MainScreen implements Screen {
 
     @Override
     public void show() {
-
     }
 
     private void update(){//call all of the update methods in sprites here
+        updateTime();
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE) && !clickCoolDown){
+            if (!pause){
+                pause = true;
+                deltaRecorded = 0;
+            }else {
+                pause = false;
+                deltaRecorded = 0;
+            }
+        }
         backGround.update();
         player.update();
     }
@@ -52,6 +70,9 @@ public class MainScreen implements Screen {
         batch.begin();
         backGround.draw(batch);
         player.draw(batch);
+        if (pause){
+            batch.draw(opacity,0,0,1920,1080);
+        }
         batch.end();
     }
 
@@ -79,5 +100,14 @@ public class MainScreen implements Screen {
     @Override
     public void dispose() {
         batch.dispose();
+    }
+
+    private void updateTime(){
+        if (deltaRecorded >= 15){
+            clickCoolDown = false;
+        }else {
+            deltaRecorded++;
+            clickCoolDown = true;
+        }
     }
 }

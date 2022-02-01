@@ -162,7 +162,7 @@ public class ShipSelector implements Screen {
     }
 
     private void updateTime(){
-        if (deltaRecorded >= 50){
+        if (deltaRecorded >= 30){
             coolDownActive = false;
         }else {
             deltaRecorded++;

@@ -12,6 +12,7 @@ import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.utils.ScreenUtils;
 import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
+import ghozti.deathstarrun.utils.saver.GameSaver;
 
 public class MenuScreen implements Screen {
 
@@ -25,6 +26,7 @@ public class MenuScreen implements Screen {
     public static boolean screenDisposed;
 
     public MenuScreen(){
+        GameSaver.loadGameData();
         background = Atlas.getTITLEBG();
         playButton = Atlas.getPLAY_BUTTON();
         hitBoxTexture = Atlas.getHitbox();
