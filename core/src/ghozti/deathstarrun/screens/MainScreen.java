@@ -14,7 +14,9 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import ghozti.deathstarrun.objects.background.environment.BackGround;
 import ghozti.deathstarrun.objects.entities.Player;
+import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
+import ghozti.deathstarrun.utils.saver.GameSaver;
 
 public class MainScreen implements Screen {
 
@@ -27,12 +29,15 @@ public class MainScreen implements Screen {
     BackGround backGround;
     Player player;
     String team;
+    Rectangle mouseHitbox;
 
     boolean pause;
     float deltaRecorded;
     boolean clickCoolDown;
 
     Texture opacity = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/opacity.png"));
+    Texture text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit.png"));
+    Rectangle textHitBox = new Rectangle(695,500,530,45);
 
     public MainScreen(TextureRegion ship){
         batch = new SpriteBatch();
@@ -41,7 +46,8 @@ public class MainScreen implements Screen {
 
         //game objects
         backGround = new BackGround();
-        player = new Player(new Sprite(ship),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING, ship);//todo mak the player set the ship id
+        player = new Player(new Sprite(ship),new float[]{500,500},1.5f,256,256,0,0,new Rectangle(), true, Constants.ShipIDs.X_WING, ship);//todo make the player set the ship id
+        mouseHitbox = new Rectangle(Gdx.input.getX(),Math.abs(Gdx.input.getY() - (int) Constants.Screen.HEIGHT),10,10);
     }
 
     @Override
@@ -49,6 +55,7 @@ public class MainScreen implements Screen {
     }
 
     private void update(){//call all of the update methods in sprites here
+        updateMousePos();
         updateTime();
         if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE) && !clickCoolDown){
             if (!pause){
@@ -57,6 +64,19 @@ public class MainScreen implements Screen {
             }else {
                 pause = false;
                 deltaRecorded = 0;
+            }
+        }
+
+        if (pause){
+            if (mouseHitbox.overlaps(textHitBox)){
+                text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit2.png"));
+                if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+                    GameSaver.data.highestScore =
+                    GameSaver.saveGameState();
+                    System.exit(0);
+                }
+            }else {
+                text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit.png"));
             }
         }
         backGround.update();
@@ -72,6 +92,8 @@ public class MainScreen implements Screen {
         player.draw(batch);
         if (pause){
             batch.draw(opacity,0,0,1920,1080);
+            batch.draw(text,695,500,530,45);
+            batch.draw(Atlas.getHitbox(),695,500,530,45);
         }
         batch.end();
     }
@@ -109,5 +131,10 @@ public class MainScreen implements Screen {
             deltaRecorded++;
             clickCoolDown = true;
         }
+    }
+
+    private void updateMousePos(){
+        mouseHitbox.x = Gdx.input.getX();
+        mouseHitbox.y = Math.abs(Gdx.input.getY() - (int)Constants.Screen.HEIGHT);
     }
 }
