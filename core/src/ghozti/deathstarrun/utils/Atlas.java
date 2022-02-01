@@ -59,4 +59,9 @@ public class Atlas {
 
     public static TextureRegion getX_WING_LASER(){return ATLAS.findRegion("xwingLaser");}
 
+    public static TextureRegion getOPACITY_BG(){return ATLAS.findRegion("opacity");}
+
+    public static TextureRegion getSAVE_AND_QUIT(){return ATLAS.findRegion("save&quit");}
+
+    public static TextureRegion getSAVE_AND_QUIT2(){return ATLAS.findRegion("save&quit2");}
 }

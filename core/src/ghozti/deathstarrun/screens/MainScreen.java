@@ -36,8 +36,8 @@ public class MainScreen implements Screen {
     float deltaRecorded;
     boolean clickCoolDown;
 
-    Texture opacity = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/opacity.png"));
-    Texture text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit.png"));
+    //ESC menu
+    TextureRegion text = Atlas.getSAVE_AND_QUIT();
     Rectangle textHitBox = new Rectangle(695,500,530,45);
 
     public MainScreen(TextureRegion ship){
@@ -70,7 +70,7 @@ public class MainScreen implements Screen {
 
         if (pause){
             if (mouseHitbox.overlaps(textHitBox)){
-                text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit2.png"));
+                text = Atlas.getSAVE_AND_QUIT2();
                 if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
                     if (CurrentGameState.score > Float.parseFloat(GameSaver.data.highestScore)) {
                         GameSaver.data.highestScore = CurrentGameState.score + "";
@@ -79,12 +79,16 @@ public class MainScreen implements Screen {
                     System.exit(0);
                 }
             }else {
-                text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit.png"));
+                text = Atlas.getSAVE_AND_QUIT();
             }
         }
-        backGround.update();
-        player.update();
+        if (!pause) {
+            backGround.update();
+            player.update();
+        }
     }
+
+    //TODO optimize the esc menu
 
     @Override
     public void render(float delta) {
@@ -94,7 +98,7 @@ public class MainScreen implements Screen {
         backGround.draw(batch);
         player.draw(batch);
         if (pause){
-            batch.draw(opacity,0,0,1920,1080);
+            batch.draw(Atlas.getOPACITY_BG(),0,0,1920,1080);
             batch.draw(text,695,500,530,45);
             batch.draw(Atlas.getHitbox(),695,500,530,45);
         }
