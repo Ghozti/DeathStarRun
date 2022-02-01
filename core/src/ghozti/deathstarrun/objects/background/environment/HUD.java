@@ -19,6 +19,6 @@ public class HUD {
 
     public void drawHud(Batch batch){
         font.draw(batch,"Score: " + (int)CurrentGameState.score, 32,1000,0,false);
-        font.draw(batch,"Greatest Score: " + Integer.parseInt(GameSaver.data.highestScore), 32,950,0,false);
+        font.draw(batch,"Greatest Score: " + (int)Float.parseFloat(GameSaver.data.highestScore), 32,950,0,false);
     }
 }

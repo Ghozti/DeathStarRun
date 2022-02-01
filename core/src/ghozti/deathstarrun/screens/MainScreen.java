@@ -16,6 +16,7 @@ import ghozti.deathstarrun.objects.background.environment.BackGround;
 import ghozti.deathstarrun.objects.entities.Player;
 import ghozti.deathstarrun.utils.Atlas;
 import ghozti.deathstarrun.utils.Constants;
+import ghozti.deathstarrun.utils.saver.CurrentGameState;
 import ghozti.deathstarrun.utils.saver.GameSaver;
 
 public class MainScreen implements Screen {
@@ -71,7 +72,9 @@ public class MainScreen implements Screen {
             if (mouseHitbox.overlaps(textHitBox)){
                 text = new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/save&quit2.png"));
                 if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
-                    GameSaver.data.highestScore =
+                    if (CurrentGameState.score > Float.parseFloat(GameSaver.data.highestScore)) {
+                        GameSaver.data.highestScore = CurrentGameState.score + "";
+                    }
                     GameSaver.saveGameState();
                     System.exit(0);
                 }
