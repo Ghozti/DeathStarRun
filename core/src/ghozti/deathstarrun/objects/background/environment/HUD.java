@@ -6,12 +6,17 @@ import ghozti.deathstarrun.utils.Font;
 public class HUD {
 
     Font font;
+    float score;
 
     public HUD(){
-        font = new Font(32);
+        font = new Font(120);
     }
 
-    public void drawHud(Batch batch, float score){
-        font.draw(batch,"Score: " + score, 32,1000,0,false);
+    public void updateHud(float scoreIncrement){
+        score += scoreIncrement;
+    }
+
+    public void drawHud(Batch batch){
+        font.draw(batch,"Score: " + (int)score, 32,1000,0,false);
     }
 }

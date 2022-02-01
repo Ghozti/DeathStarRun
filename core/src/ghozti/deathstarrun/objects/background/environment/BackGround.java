@@ -9,20 +9,24 @@ public class BackGround {
 
     //all bg objects here
     DeathStarTrench[] trenches;
+    HUD hud;
 
     public BackGround(){
         trenches = new DeathStarTrench[]{new DeathStarTrench(0), new DeathStarTrench(1080)};
+        hud = new HUD();
     }
 
     public void update(){
         for (DeathStarTrench i : trenches) {
             i.update();
         }
+        hud.updateHud(0.1f);
     }
 
     public void draw(Batch batch){
         for (DeathStarTrench i : trenches) {
             i.draw(batch);
         }
+        hud.drawHud(batch);
     }
 }
