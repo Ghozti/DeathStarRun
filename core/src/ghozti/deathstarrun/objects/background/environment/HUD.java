@@ -19,7 +19,7 @@ public class HUD {
     public void updateHud(float scoreIncrement, float x, float y){
         CurrentGameState.score += scoreIncrement;
         this.x = x;
-        this.y = y;
+        this.y = y;//1208,452, {758,68}
     }
 
     public void drawHud(Batch batch){

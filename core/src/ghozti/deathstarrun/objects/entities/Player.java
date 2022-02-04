@@ -32,14 +32,14 @@ public class Player extends ShipGameSprite {
     private void handleInput(){
         float xChange = 0, yChange = 0;
         laserGroup.rotateBoth(sprite.getRotation());
-        if (Gdx.input.isKeyPressed(Input.Keys.D)){
+        if (Gdx.input.isKeyPressed(Input.Keys.D) && !outOfBoundsX_Max()){
             xChange = speed;
             if (rightRotation <= maxRotationValue){
                 sprite.rotate(-rotaionSpeed);
                 rightRotation += rotaionSpeed;
                 leftRotation -= rotaionSpeed;
             }
-        }else if (Gdx.input.isKeyPressed(Input.Keys.A)){
+        }else if (Gdx.input.isKeyPressed(Input.Keys.A) && !outOfBoundsX_Min()){
             xChange = -speed;
             if (leftRotation <= maxRotationValue){
                 sprite.rotate(rotaionSpeed);
@@ -68,10 +68,30 @@ public class Player extends ShipGameSprite {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.W)){
-            yChange = speed;
+            if (!outOfBoundsY_Max()) {
+                yChange = speed;
+            }
         }else if (Gdx.input.isKeyPressed(Input.Keys.S)){
-            yChange = -speed;
+            if (!outOfBoundsY_Min()) {
+                yChange = -speed;
+            }
         }
         updateSpritePosition(xChange,yChange);
+    }
+
+    private boolean outOfBoundsX_Min(){
+        return positionArray[0] <= 452;
+    }
+
+    private boolean outOfBoundsX_Max(){
+        return positionArray[0] >= 1208;
+    }
+
+    private boolean outOfBoundsY_Min(){
+        return positionArray[1] <= 68;
+    }
+
+    private boolean outOfBoundsY_Max(){
+        return positionArray[1] >= 758;
     }
 }
