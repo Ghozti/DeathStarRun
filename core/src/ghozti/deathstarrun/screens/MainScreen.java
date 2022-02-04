@@ -4,7 +4,6 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -55,40 +54,38 @@ public class MainScreen implements Screen {
     public void show() {
     }
 
-    private void update(){//call all of the update methods in sprites here
+    private void update() {//call all of the update methods in sprites here
         updateMousePos();
         updateTime();
-        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE) && !clickCoolDown){
-            if (!pause){
+        if (Gdx.input.isKeyPressed(Input.Keys.ESCAPE) && !clickCoolDown) {
+            if (!pause) {
                 pause = true;
                 deltaRecorded = 0;
-            }else {
+            } else {
                 pause = false;
                 deltaRecorded = 0;
             }
         }
 
-        if (pause){
-            if (mouseHitbox.overlaps(textHitBox)){
+        if (pause) {
+            if (mouseHitbox.overlaps(textHitBox)) {
                 text = Atlas.getSAVE_AND_QUIT2();
-                if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)){
+                if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
                     if (CurrentGameState.score > Float.parseFloat(GameSaver.data.highestScore)) {
                         GameSaver.data.highestScore = CurrentGameState.score + "";
                     }
                     GameSaver.saveGameState();
                     System.exit(0);
                 }
-            }else {
+            } else {
                 text = Atlas.getSAVE_AND_QUIT();
             }
         }
         if (!pause) {
-            backGround.update();
+            backGround.update(player.getPositionArray()[0],player.getPositionArray()[1]);
             player.update();
         }
     }
-
-    //TODO optimize the esc menu
 
     @Override
     public void render(float delta) {

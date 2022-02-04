@@ -16,11 +16,11 @@ public class BackGround {
         hud = new HUD();
     }
 
-    public void update(){
+    public void update(float x, float y){
         for (DeathStarTrench i : trenches) {
             i.update();
         }
-        hud.updateHud(0.1f);
+        hud.updateHud(0.1f,x,y);
     }
 
     public void draw(Batch batch){
