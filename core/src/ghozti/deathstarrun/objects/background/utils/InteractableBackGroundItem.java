@@ -12,6 +12,7 @@ public abstract class InteractableBackGroundItem {
     float speed;
     float width, height;
     float damageGiven;
+    boolean isOutOfScreen;
 
     public InteractableBackGroundItem(){
 
