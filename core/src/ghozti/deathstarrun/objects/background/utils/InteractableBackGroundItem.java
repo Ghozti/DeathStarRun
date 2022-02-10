@@ -6,13 +6,13 @@ import com.badlogic.gdx.math.Rectangle;
 
 public abstract class InteractableBackGroundItem {
 
-    Texture texture;
-    Rectangle hitbox;
-    float[] posArray;
-    float speed;
-    float width, height;
-    float damageGiven;
-    boolean isOutOfScreen;
+    private Texture texture;
+    private Rectangle hitbox;
+    private float[] posArray;
+    private float speed;
+    private float width, height;
+    private float damageGiven;
+    public boolean isAlive;
 
     public InteractableBackGroundItem(){
 
@@ -21,7 +21,7 @@ public abstract class InteractableBackGroundItem {
     //***************************SETTERS********************************************************************************
     public void setTexture(Texture texture) {
         this.texture = texture;
-    }
+    }//TODO change this to texture region
 
     public void setHitbox(Rectangle hitbox) {
         this.hitbox = hitbox;
