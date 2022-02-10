@@ -14,14 +14,15 @@ public class BackGroundObjectGroupRenderer {
        - object has to start to be rendered above the screen borders and will become invalid after it's 60 px below the bottom border
      */
 
-    //final float rightSide =
+    final float rightSide = 500;
 
-    private double[] getRandomizedCoordinates(){
+    private float[] getRandomizedCoordinates(){
         return null;
     }
 
     private InteractableBackGroundItem getNext(){
         //will calculate next object to render
-        return null;
+        float[] position = getRandomizedCoordinates();
+        return new Pole(position[0],position[1]);
     }
 }
