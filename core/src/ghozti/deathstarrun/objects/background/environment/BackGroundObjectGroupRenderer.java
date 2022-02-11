@@ -20,9 +20,12 @@ public class BackGroundObjectGroupRenderer {
      */
 
     private ArrayList<InteractableBackGroundItem> objects;
+    private final float xPosRight = 500, xPosLeft = 900;
+    private final float yPos = 2010;
 
     public BackGroundObjectGroupRenderer(){
         objects = new ArrayList<>();
+        objects.add(new Pole(xPosRight, yPos));
     }
 
     private InteractableBackGroundItem getNext(){
