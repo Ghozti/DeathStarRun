@@ -1,6 +1,7 @@
 package ghozti.deathstarrun.objects.background.environment;
 
 import com.badlogic.gdx.graphics.g2d.Batch;
+import ghozti.deathstarrun.objects.background.environment.objects.Pole;
 import ghozti.deathstarrun.objects.background.utils.InteractableBackGroundItem;
 
 import java.util.ArrayList;
