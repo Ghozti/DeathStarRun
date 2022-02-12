@@ -20,7 +20,7 @@ public class BackGroundObjectGroupRenderer {
      */
 
     private ArrayList<InteractableBackGroundItem> objects;
-    private final float xPosRight = 500, xPosLeft = 900;
+    private final float xPosRight = 395, xPosLeft = 900;
     private final float yPos = 2010;
 
     public BackGroundObjectGroupRenderer(){
@@ -30,8 +30,7 @@ public class BackGroundObjectGroupRenderer {
 
     private InteractableBackGroundItem getNext(){
         //will calculate next object to render
-        float[] position = {500,2100};
-        return new Pole(position[0],position[1]);
+        return new Pole(500,2100);
     }
 
     public void updateAllObjects(){

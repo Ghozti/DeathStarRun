@@ -15,8 +15,8 @@ public class Pole extends InteractableBackGroundItem{
         setHitbox(new Rectangle());
         setPosArray(new float[] {x, y});
         setSpeed(Constants.ScrollingBackGround.INIT_SPEED);
-        setWidth(64*2);
-        setHeight(16*2);
+        setWidth(64*8);
+        setHeight(16*8);
         setDamageGiven(5);
     }
 
@@ -24,7 +24,7 @@ public class Pole extends InteractableBackGroundItem{
     public void onTargetCollision(Rectangle target) {
         if (isAlive) {
             if (getHitbox().overlaps(target)) {
-                isAlive = false;
+                //isAlive = false;
                 //todo maybe lower player score too
             }
         }
