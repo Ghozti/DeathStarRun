@@ -27,6 +27,8 @@ public class BackGroundObjectGroupRenderer {
     public BackGroundObjectGroupRenderer(){
         objects = new ArrayList<>();
         objects.add(new Pole(xPosRight, yPos));
+        objects.add(new Pole(xPosRight, yPos));
+        objects.add(new Pole(xPosRight, yPos));
     }
 
     private InteractableBackGroundItem getNext(){

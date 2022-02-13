@@ -35,6 +35,9 @@ public class Pole extends InteractableBackGroundItem{
         if (isAlive) {
             getPosArray()[1] -= getSpeed();
         }
+        if (getPosArray()[1] <= 0){
+            isAlive = false;
+        }
     }
 
     @Override
