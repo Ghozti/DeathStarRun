@@ -31,6 +31,10 @@ public class BackGroundObjectGroupRenderer {
         objects.add(new Pole(xPosRight, yPos));
     }
 
+    private void updateRenderer(){
+
+    }
+
     private InteractableBackGroundItem getNext(){
         //will calculate next object to render
         return new Pole(500,2100);
