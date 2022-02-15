@@ -32,7 +32,11 @@ public class BackGroundObjectGroupRenderer {
     }
 
     private void updateRenderer(){
+        for (int i = 0; i < objects.size(); i++) {
+            if (!objects.get(i).isAlive){
 
+            }
+        }
     }
 
     private InteractableBackGroundItem getNext(){
