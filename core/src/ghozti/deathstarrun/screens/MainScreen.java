@@ -75,7 +75,7 @@ public class MainScreen implements Screen {
                         GameSaver.data.highestScore = CurrentGameState.score + "";
                     }
                     GameSaver.saveGameState();
-                    System.exit(0);
+                    Gdx.app.exit();
                 }
             } else {
                 text = Atlas.getSAVE_AND_QUIT();
