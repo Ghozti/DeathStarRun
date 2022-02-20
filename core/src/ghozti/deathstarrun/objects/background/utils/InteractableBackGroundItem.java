@@ -12,7 +12,7 @@ public abstract class InteractableBackGroundItem {
     private float speed;
     private float width, height;
     private float damageGiven;
-    public boolean isAlive, isMoving;
+    public boolean isAlive = true, isMoving;
 
     public InteractableBackGroundItem(){
 

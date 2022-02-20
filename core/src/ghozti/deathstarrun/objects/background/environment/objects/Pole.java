@@ -24,7 +24,7 @@ public class Pole extends InteractableBackGroundItem{
     public void onTargetCollision(Rectangle target) {
         if (isAlive) {
             if (getHitbox().overlaps(target)) {
-                //isAlive = false;
+                isAlive = false;
                 //todo maybe lower player score too
             }
         }

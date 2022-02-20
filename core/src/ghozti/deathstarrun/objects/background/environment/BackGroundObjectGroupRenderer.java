@@ -3,6 +3,7 @@ package ghozti.deathstarrun.objects.background.environment;
 import com.badlogic.gdx.graphics.g2d.Batch;
 import ghozti.deathstarrun.objects.background.environment.objects.Pole;
 import ghozti.deathstarrun.objects.background.utils.InteractableBackGroundItem;
+import ghozti.deathstarrun.utils.Randomizer;
 
 import java.util.ArrayList;
 
@@ -34,7 +35,7 @@ public class BackGroundObjectGroupRenderer {
     private void updateRenderer(){
         for (int i = 0; i < objects.size(); i++) {
             if (!objects.get(i).isAlive){
-                //todo this
+                objects.set(i,new Pole(395,2010));
             }
         }
     }
@@ -48,6 +49,7 @@ public class BackGroundObjectGroupRenderer {
         for (InteractableBackGroundItem i : objects){
             i.update();
         }
+        updateRenderer();
     }
 
     public void drawAllObjects(Batch batch){
