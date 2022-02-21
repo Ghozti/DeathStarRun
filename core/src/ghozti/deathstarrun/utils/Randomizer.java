@@ -27,8 +27,12 @@ public class Randomizer {
         return new int[] {r.nextInt(high-low) + low, r.nextInt(high-low) + low};
     }
 
-    public static int[] getPositionList(int lowX, int highX, int lowY, int highY){
+    public int[] getPositionList(int lowX, int highX, int lowY, int highY){
         Random r = new Random();
         return new int[] {r.nextInt(highX-lowX) + lowX, r.nextInt(highY-lowY) + lowY};
+    }
+
+    public int flipCoin(){//1 for heads - for tails
+        return (int) Math.round( Math.random());
     }
 }
