@@ -35,7 +35,12 @@ public class BackGroundObjectGroupRenderer {
     private void updateRenderer(){
         for (int i = 0; i < objects.size(); i++) {
             if (!objects.get(i).isAlive){
-                objects.set(i,new Pole(395,2010));
+                Randomizer randomizer = new Randomizer();
+                if (randomizer.flipCoin() == 1){
+                    objects.set(i, new Pole(395,2010));
+                }else {
+                    objects.set(i, new Pole(900,2010));
+                }
             }
         }
     }
