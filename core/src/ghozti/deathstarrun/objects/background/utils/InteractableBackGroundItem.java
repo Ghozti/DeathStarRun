@@ -14,10 +14,6 @@ public abstract class InteractableBackGroundItem {
     private float damageGiven;
     public boolean isAlive = true, isMoving;
 
-    public InteractableBackGroundItem(){
-
-    }
-
     //***************************SETTERS********************************************************************************
     public void setTexture(Texture texture) {
         this.texture = texture;

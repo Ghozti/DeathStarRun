@@ -10,7 +10,7 @@ import ghozti.deathstarrun.utils.Constants;
 
 public class Pole extends InteractableBackGroundItem{
 
-    public Pole(float x, float y){
+    public Pole(float x, float y, boolean rightSide){
         setTexture(new Texture(Gdx.files.internal("core/assets/death-star-run-startAssets/pole.png")));
         setHitbox(new Rectangle());
         setPosArray(new float[] {x, y});

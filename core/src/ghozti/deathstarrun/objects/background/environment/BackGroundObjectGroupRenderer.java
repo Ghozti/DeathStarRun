@@ -27,27 +27,22 @@ public class BackGroundObjectGroupRenderer {
 
     public BackGroundObjectGroupRenderer(){
         objects = new ArrayList<>();
-        objects.add(new Pole(xPosRight, yPos));
-        objects.add(new Pole(xPosRight, yPos));
-        objects.add(new Pole(xPosRight, yPos));
+        objects.add(new Pole(xPosRight, yPos, true));
+        objects.add(new Pole(xPosRight, yPos, true));
+        objects.add(new Pole(xPosRight, yPos, true));
     }
 
-    private void updateRenderer(){
+    private void updateRenderer(){//true for right side false for left
         for (int i = 0; i < objects.size(); i++) {
             if (!objects.get(i).isAlive){
                 Randomizer randomizer = new Randomizer();
                 if (randomizer.flipCoin() == 1){
-                    objects.set(i, new Pole(395,2010));
+                    objects.set(i, new Pole(395,2010,true));
                 }else {
-                    objects.set(i, new Pole(900,2010));
+                    objects.set(i, new Pole(900,2010, false));
                 }
             }
         }
-    }
-
-    private InteractableBackGroundItem getNext(){
-        //will calculate next object to render
-        return new Pole(500,2100);
     }
 
     public void updateAllObjects(){
