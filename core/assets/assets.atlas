@@ -6,182 +6,196 @@ filter: Nearest, Nearest
 repeat: none
 bg
   rotate: false
-  xy: 1536, 639
+  xy: 768, 422
   size: 160, 90
   orig: 160, 90
   offset: 0, 0
   index: -1
 chooseYourSide
   rotate: false
-  xy: 2, 68
+  xy: 1012, 625
   size: 219, 15
   orig: 219, 15
   offset: 0, 0
   index: -1
 empire
   rotate: false
-  xy: 2, 215
+  xy: 0, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 hitbox
   rotate: false
-  xy: 1924, 1947
+  xy: 1920, 1856
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 leftArrow1
   rotate: false
-  xy: 1164, 390
+  xy: 1920, 1792
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 leftArrow2
   rotate: false
-  xy: 1698, 665
+  xy: 928, 448
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 leftArrow3
   rotate: false
-  xy: 1034, 277
+  xy: 1984, 1856
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 opacity
   rotate: false
-  xy: 2, 731
+  xy: 0, 768
   size: 1920, 1280
   orig: 1920, 1280
   offset: 0, 0
   index: -1
 pixil-frame-0
   rotate: false
-  xy: 1034, 343
+  xy: 1920, 1920
   size: 128, 128
   orig: 128, 128
   offset: 0, 0
   index: -1
 play
   rotate: false
-  xy: 1343, 456
+  xy: 768, 343
   size: 60, 15
   orig: 60, 15
   offset: 0, 0
   index: -1
 playHovered
   rotate: false
-  xy: 439, 198
+  xy: 1445, 753
   size: 60, 15
   orig: 60, 15
   offset: 0, 0
   index: -1
+pole
+  rotate: false
+  xy: 1984, 1824
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
+pole2
+  rotate: false
+  xy: 1984, 1840
+  size: 64, 16
+  orig: 64, 16
+  offset: 0, 0
+  index: -1
 rebel
   rotate: false
-  xy: 1020, 473
+  xy: 756, 512
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 rightArrow1
   rotate: false
-  xy: 2, 2
+  xy: 1268, 689
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 rightArrow2
   rotate: false
-  xy: 1536, 573
+  xy: 768, 358
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 rightArrow3
   rotate: false
-  xy: 260, 132
+  xy: 1012, 546
   size: 64, 64
   orig: 64, 64
   offset: 0, 0
   index: -1
 save&quit
   rotate: false
-  xy: 1164, 456
+  xy: 1012, 610
   size: 177, 15
   orig: 177, 15
   offset: 0, 0
   index: -1
 save&quit2
   rotate: false
-  xy: 260, 198
+  xy: 1268, 753
   size: 177, 15
   orig: 177, 15
   offset: 0, 0
   index: -1
 teamSelectorBG
   rotate: false
-  xy: 2, 85
+  xy: 1012, 640
   size: 256, 128
   orig: 256, 128
   offset: 0, 0
   index: -1
 title
   rotate: false
-  xy: 2, 473
+  xy: 0, 512
   size: 500, 256
   orig: 500, 256
   offset: 0, 0
   index: -1
 xwing
   rotate: false
-  xy: 504, 473
+  xy: 0, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingGold
   rotate: false
-  xy: 518, 215
+  xy: 256, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingGreen
   rotate: false
-  xy: 762, 473
+  xy: 256, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingLaser
   rotate: false
-  xy: 223, 68
+  xy: 1231, 625
   size: 2, 15
   orig: 2, 15
   offset: 0, 0
   index: -1
 xwingOrange
   rotate: false
-  xy: 1278, 473
+  xy: 512, 0
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingPurple
   rotate: false
-  xy: 260, 215
+  xy: 500, 512
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
   index: -1
 xwingRed
   rotate: false
-  xy: 776, 215
+  xy: 512, 256
   size: 256, 256
   orig: 256, 256
   offset: 0, 0
